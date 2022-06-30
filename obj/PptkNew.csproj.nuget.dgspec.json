@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/rangga/Data/Projects/DotNetCore/PptkNew/PptkNew.csproj": {}
+    "C:\\Data\\Projects\\DotNetCore\\PptkNew\\PptkNew.csproj": {}
   },
   "projects": {
-    "/home/rangga/Data/Projects/DotNetCore/PptkNew/PptkNew.csproj": {
+    "C:\\Data\\Projects\\DotNetCore\\PptkNew\\PptkNew.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rangga/Data/Projects/DotNetCore/PptkNew/PptkNew.csproj",
+        "projectUniqueName": "C:\\Data\\Projects\\DotNetCore\\PptkNew\\PptkNew.csproj",
         "projectName": "PptkNew",
-        "projectPath": "/home/rangga/Data/Projects/DotNetCore/PptkNew/PptkNew.csproj",
-        "packagesPath": "/home/rangga/.nuget/packages/",
-        "outputPath": "/home/rangga/Data/Projects/DotNetCore/PptkNew/obj/",
+        "projectPath": "C:\\Data\\Projects\\DotNetCore\\PptkNew\\PptkNew.csproj",
+        "packagesPath": "C:\\Users\\rangg\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Projects\\DotNetCore\\PptkNew\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rangga/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\rangg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.106/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
