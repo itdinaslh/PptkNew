@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S75XPn2bDVTfYygkcEQFYXECUSj23T+ml0cMx4IJukfjQzGR/kWjebDd9t89JgssEzsIS5n/w8wP48JuqPTLwg==",
+  "dgSpecHash": "FJCGo+74eWSNL3BDm5vZqutTDwoPLszT8t3s5cWN8YXbXg8AH9X+Q0DUeBiaSvhsKN9XTkEV8D+hyN+eAN+m0A==",
   "success": true,
-  "projectFilePath": "C:\\Data\\Projects\\DotNetCore\\PptkNew\\PptkNew.csproj",
+  "projectFilePath": "/home/rangga/Data/Projects/DotNetCore/PptkNew/PptkNew.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
