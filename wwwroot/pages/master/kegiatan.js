@@ -14,17 +14,17 @@ function loadTable() {
         responsive: true,
         lengthMenu: [5, 10, 20],
         ajax: {
-            url: '/api/master/program/list',
+            url: '/api/master/kegiatan/list',
             method: 'POST'
         },
         columns: [
-            { data: 'programId', name: 'programId', searchable: false, orderable: false },
-            { data: 'kodeProgram', name: 'kodeProgram' },
-            { data: 'namaProgram', name: 'namaProgram' },
+            { data: 'kegiatanId', name: 'kegiatanId', searchable: false, orderable: false },
+            { data: 'kodeKegiatan', name: 'kodeKegiatan' },
+            { data: 'namaKegiatan', name: 'namaKegiatan' },
             {
                 "render": function (data, type, row) {
-                    return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/program/edit/?id="
-                        + row.programId + "'><i class='fa fa-edit'></i> Edit</button>";
+                    return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/kegiatan/edit/?id="
+                        + row.kegiatanId + "'><i class='fa fa-edit'></i> Edit</button>";
                 }
             }
         ],

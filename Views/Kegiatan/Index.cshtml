@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Parent = "Master";
-    ViewBag.Title = "Master Data Program";
+    ViewBag.Title = "Master Data Kegiatan";
 }
 
 @section vendorcss {
@@ -27,11 +27,11 @@
     <div class="block-header">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <h2>Program</h2>
+                <h2>Master Data Kegiatan</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/"><i class="fa fa-dashboard"></i></a></li>
                     <li class="breadcrumb-item">Master Data</li>
-                    <li class="breadcrumb-item active">Program</li>
+                    <li class="breadcrumb-item active">Kegiatan</li>
                 </ul>
             </div>
         </div>
@@ -40,12 +40,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Administrasi Master Data Program</h2>
+                    <h2>Administrasi Master Data Kegiatan</h2>
                     <ul class="header-dropdown">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="javascript:void(0);" class="showMe" data-href="/master/program/create">Tambah Program</a></li>
+                                <li><a href="javascript:void(0);" class="showMe" data-href="/master/kegiatan/create">Tambah Kegiatan</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -56,8 +56,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Program</th>
-                                    <th>Nama Program</th>
+                                    <th>Kode Kegiatan</th>
+                                    <th>Nama Kegiatan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -81,6 +81,5 @@
 }
 
 @section scripts {
-    <script src="~/pages/master/program.js"></script>
+    <script src="~/pages/master/kegiatan.js"></script>
 }
-

@@ -6,6 +6,6 @@ namespace PptkNew.Repositories
     {
         IQueryable<Kegiatan> Kegiatans { get; }
 
-        Task SaveKegiatan(Kegiatan kegiatan);
+        Task SaveKegiatanAsync(Kegiatan kegiatan);
     }
 }

@@ -17,7 +17,7 @@ namespace PptkNew.Entities
         public string KodeKegiatan { get; set; }
 
         [Required(ErrorMessage = "Nama Kegiatan Harus Diisi")]
-        [MaxLength(30)]
+        [MaxLength(255)]
         public string NamaKegiatan { get; set; }
 
         public bool IsDeleted { get; set; } = false;

@@ -6,19 +6,16 @@ using System.Linq.Dynamic.Core;
 using Microsoft.AspNetCore.Authorization;
 
 namespace PptkNew.Controllers.api;
-
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
-public class ProgramApiController : ControllerBase
+public class KegiatanApiController : ControllerBase
 {
-    private IProg repo;
+    private IKegiatan repo;
 
-    public ProgramApiController(IProg repo)
-    {
-        this.repo = repo;
-    }
+    public KegiatanApiController(IKegiatan kegiatan) => repo = kegiatan;
 
-    [HttpPost("/api/master/program/list")]
+    [HttpPost("/api/master/kegiatan/list")]
     public async Task<IActionResult> ProgramList()
     {
         var draw = Request.Form["draw"].FirstOrDefault();
@@ -31,7 +28,7 @@ public class ProgramApiController : ControllerBase
         int skip = start != null ? Convert.ToInt32(start) : 0;
         int recordsTotal = 0;
 
-        var init = repo.Progs;
+        var init = repo.Kegiatans;
 
         if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
         {
@@ -40,8 +37,8 @@ public class ProgramApiController : ControllerBase
 
         if (!string.IsNullOrEmpty(searchValue))
         {
-            init = init.Where(a => a.NamaProgram.ToLower().Contains(searchValue.ToLower()) || 
-                a.KodeProgram.ToLower().Contains(searchValue.ToLower())
+            init = init.Where(a => a.NamaKegiatan.ToLower().Contains(searchValue.ToLower()) ||
+                a.KodeKegiatan.ToLower().Contains(searchValue.ToLower())
             );
         }
 

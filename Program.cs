@@ -24,6 +24,7 @@ services.AddDbContext<AppDbContext>(options => {
 // Add Service to DI Container
 {
     services.AddScoped<IProg, ProgService>();
+    services.AddScoped<IKegiatan, KegiatanService>();
 }
 
 services.AddAuthentication(options => {
