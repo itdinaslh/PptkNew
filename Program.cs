@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using PptkNew.Data;
+using PptkNew.Services;
+using PptkNew.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,11 @@ services.AddCors();
 services.AddDbContext<AppDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("AppDB"));
 });
+
+// Add Service to DI Container
+{
+    services.AddScoped<IProg, ProgService>();
+}
 
 services.AddAuthentication(options => {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

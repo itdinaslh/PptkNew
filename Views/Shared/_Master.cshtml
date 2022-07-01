@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="E-PPTK UPST Dinas Lingkungan Hidup Prov. DKI Jakarta">
     <meta name="author" content="Rangga Dwi">    
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
 
     <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" href="~assets/vendor/font-awesome/css/font-awesome.min.css}">
-    @RenderSectionAsync("vendorcss", required: false)
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.min.css">
+    @await RenderSectionAsync("vendorcss", required: false)
 
     <!-- MAIN Project CSS file -->
     <link rel="stylesheet" href="~/assets/css/main.css">
 
-    @RenderSectionAsync("styles", required: false)
+    @await RenderSectionAsync("styles", required: false)
 </head>
 <body data-theme="dark" class="font-nunito">
     <div id="wrapper" class="theme-blush">
@@ -41,14 +41,13 @@
 
     <!-- Javascript -->
     <script src="~/assets/bundles/libscripts.bundle.js"></script>
-    <script src="~/assets/bundles/vendorscripts.bundle.js"></script>
-    <script src="~/js/global.js"></script>
+    <script src="~/assets/bundles/vendorscripts.bundle.js"></script>    
 
     <!-- page vendor js file -->
-    @RenderSectionAsync("vendorjs", required: false)
+    @await RenderSectionAsync("vendorjs", required: false)
 
     <!-- page js file -->
     <script src="~/assets/bundles/mainscripts.bundle.js"></script>
-    @RenderSectionAsync("scripts", required: false)
+    @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

@@ -75,34 +75,20 @@
                                 <li><a href="#">Basic Elements</a></li>
                             </ul>
                         </li>
-                        <li class="{{Request::is('master*') ? 'active' : ''}}">
+                        <li class='@(ViewBag.Parent == "Master" ? "active" : "")'>
                             <a href="#Master" class="has-arrow"><i class="fa fa-database"></i><span>Master Data</span></a>
                             <ul>
-                                <li class="{{Request::path() == '/master/provinsi' ? 'active' : ''}}">
-                                    <a href="/master/provinsi">Provinsi</a>
+                                <li class='@(ViewBag.Title == "Master Data Program" ? "active" : "")'>
+                                    <a asp-action="Index" asp-controller="Prog">Program</a>
                                 </li>
                                 <li>
-                                    <a href="#">Kabupaten</a>
+                                    <a href="#">Kegiatan</a>
                                 </li>
                                 <li>
-                                    <a href="#">Kecamatan</a>
+                                    <a href="#">Sub Kegiatan</a>
                                 </li>
                                 <li>
-                                    <a href="#">Kelurahan</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="{{Request::is('auth/*') ? 'active' : ''}}">
-                            <a href="#Users" class="has-arrow"><i class="fa fa-user"></i><span>Users</span></a>
-                            <ul>
-                                <li class="{{Request::path() == '/auth/roles' ? 'active' : ''}}">
-                                    <a href="/auth/roles">Roles</a>
-                                </li>
-                                <li class="{{Request::path() == '/auth/users' ? 'active' : ''}}">
-                                    <a href="/auth/users">User List</a>
-                                </li>
-                                <li class="{{Request::path() == '/auth/permissions' ? 'active' : ''}}">
-                                    <a href="/auth/permissions">Permissions</a>
+                                    <a href="#">Jenis Pengadaan</a>
                                 </li>
                             </ul>
                         </li>
@@ -121,7 +107,7 @@
                 <ul class="right_chat list-unstyled li_animation_delay">
                     <li>
                         <a href="javascript:void(0);" class="media">
-                            <img class="media-object" src="{{asset('/assets/images/xs/avatar1.jpg')}}" alt="">
+                            <img class="media-object" src="~/assets/images/xs/avatar1.jpg" alt="">
                             <div class="media-body">
                                 <span class="name d-flex justify-content-between">Chris Fox <i class="fa fa-heart-o font-12"></i></span>
                                 <span class="message">chrisfox@gmail.com</span>
@@ -130,7 +116,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="media">
-                            <img class="media-object" src="{{asset('/assets/images/xs/avatar2.jpg')}}" alt="">
+                            <img class="media-object" src="~/assets/images/xs/avatar2.jpg" alt="">
                             <div class="media-body">
                                 <span class="name d-flex justify-content-between">Joge Lucky <i class="fa fa-heart-o font-12"></i></span>
                                 <span class="message">Jogelucky@gmail.com</span>
@@ -139,7 +125,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="media">
-                            <img class="media-object" src="{{asset('/assets/images/xs/avatar3.jpg')}}" alt="">
+                            <img class="media-object" src="~/assets/images/xs/avatar3.jpg" alt="">
                             <div class="media-body">
                                 <span class="name d-flex justify-content-between">Isabella <i class="fa fa-heart-o font-12"></i></span>
                                 <span class="message">Isabella@gmail.com</span>
@@ -148,7 +134,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="media">
-                            <img class="media-object" src="{{asset('/assets/images/xs/avatar4.jpg')}}" alt="">
+                            <img class="media-object" src="~/assets/images/xs/avatar4.jpg" alt="">
                             <div class="media-body">
                                 <span class="name d-flex justify-content-between">Folisise Chosielie <i class="fa fa-heart font-12"></i></span>
                                 <span class="message">FolisiseChosielie@gmail.com</span>
@@ -157,7 +143,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="media">
-                            <img class="media-object" src="{{asset('/assets/images/xs/avatar5.jpg')}}" alt="">
+                            <img class="media-object" src="~/assets/images/xs/avatar5.jpg" alt="">
                             <div class="media-body">
                                 <span class="name d-flex justify-content-between">Alexander <i class="fa fa-heart-o font-12"></i></span>
                                 <span class="message">Alexander@gmail.com</span>
