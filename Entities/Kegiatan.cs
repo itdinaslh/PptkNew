@@ -26,5 +26,7 @@ namespace PptkNew.Entities
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+        public List<SubKegiatan> SubKegiatans { get; set; }
+
     }
 }

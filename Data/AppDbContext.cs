@@ -10,6 +10,10 @@ namespace PptkNew.Data
         
         public DbSet<Skpd> Skpds { get; set; }
         public DbSet<Prog> Progs { get; set; }
+        public DbSet<Kegiatan> Kegiatans { get; set; }
+        public DbSet<SubKegiatan> SubKegiatans { get; set; }
+        public DbSet<Rekening> Rekenings { get; set; }
+        public DbSet<JenisPengadaan> JenisPengadaan { get; set; }
         
     }
 }

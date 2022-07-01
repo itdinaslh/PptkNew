@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>E-PPTK :: @ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="E-PPTK UPST Dinas Lingkungan Hidup Prov. DKI Jakarta">
+    <meta name="author" content="Rangga Dwi">    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="~assets/vendor/font-awesome/css/font-awesome.min.css}">
+    @RenderSectionAsync("vendorcss", required: false)
+
+    <!-- MAIN Project CSS file -->
+    <link rel="stylesheet" href="~/assets/css/main.css">
+
+    @RenderSectionAsync("styles", required: false)
+</head>
+<body data-theme="dark" class="font-nunito">
+    <div id="wrapper" class="theme-blush">
+        <!-- Page loader -->
+        <partial name="_Loader" />
+
+        <!-- Top navbar div start -->
+        <partial name="_TopBar" />
+
+        <!-- main left menu (sidebar) -->
+        <partial name="_SidebarAdmin" />
+
+        <!-- rightbar icon div -->
+        <partial name="_RightBar" />
+
+        <!-- mani page content body part -->
+        <div id="main-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="~/assets/bundles/libscripts.bundle.js"></script>
+    <script src="~/assets/bundles/vendorscripts.bundle.js"></script>
+    <script src="~/js/global.js"></script>
+
+    <!-- page vendor js file -->
+    @RenderSectionAsync("vendorjs", required: false)
+
+    <!-- page js file -->
+    <script src="~/assets/bundles/mainscripts.bundle.js"></script>
+    @RenderSectionAsync("scripts", required: false)
+</body>
+</html>
