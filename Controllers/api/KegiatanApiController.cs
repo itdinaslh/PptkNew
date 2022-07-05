@@ -11,7 +11,7 @@ namespace PptkNew.Controllers.api;
 [ApiController]
 public class KegiatanApiController : ControllerBase
 {
-    private IKegiatan repo;
+    private readonly IKegiatan repo;
 
     public KegiatanApiController(IKegiatan kegiatan) => repo = kegiatan;
 
@@ -49,5 +49,19 @@ public class KegiatanApiController : ControllerBase
         var jsonData = new { draw = draw, recordsFiltered = recordsTotal, recordsTotal, data = result };
 
         return Ok(jsonData);
+    }
+
+    [HttpGet("/api/master/kegiatan/search")]
+    public async Task<IActionResult> SearchKegiatan(string? term)
+    {
+        var data = await repo.Kegiatans            
+            .Where(k => !String.IsNullOrEmpty(term) ?
+                k.NamaKegiatan.ToLower().Contains(term.ToLower()) : true
+            ).Select(s => new {
+                id = s.KegiatanId,
+                namaKegiatan = s.NamaKegiatan
+            }).Take(10).ToListAsync();
+
+        return Ok(data);
     }
 }

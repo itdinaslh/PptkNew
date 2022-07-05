@@ -1,0 +1,25 @@
+﻿@model JenisPengadaan
+
+<form action="/master/jenis-pengadaan/store" method="post">
+    <div class="modal-header">
+        @if (Model.JenisPengadaanId != 0) {
+            <h4 class="model-title">Edit Master Jenis Pengadaan</h4>
+        }
+        else {
+            <h4 class="modal-title">Tambah Master Jenis Pengadaan</h4>
+        } 
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" asp-for="JenisPengadaanId">         
+        <div class="form-group">
+            <label>Nama Jenis Pengadaan</label>
+            <input type="text" asp-for="NamaJenis" class="form-control" autofocus autocomplete="off" />
+            <span asp-validation-for="NamaJenis" class="text-danger"></span>
+        </div>  
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

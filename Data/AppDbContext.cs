@@ -13,7 +13,7 @@ namespace PptkNew.Data
         public DbSet<Kegiatan> Kegiatans { get; set; }
         public DbSet<SubKegiatan> SubKegiatans { get; set; }
         public DbSet<Rekening> Rekenings { get; set; }
-        public DbSet<JenisPengadaan> JenisPengadaan { get; set; }
+        public DbSet<JenisPengadaan> JenisPengadaans { get; set; }
         
     }
 }

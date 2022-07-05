@@ -26,7 +26,7 @@ namespace PptkNew.Entities
 
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
 
-        public int KegiatanId { get; set; }
+        public int? KegiatanId { get; set; }
 
         public Kegiatan Kegiatan { get; set; }
     }

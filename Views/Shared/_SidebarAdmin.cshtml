@@ -84,11 +84,11 @@
                                 <li class='@(ViewBag.Title == "Master Data Kegiatan" ? "active" : "")'>
                                     <a asp-action="Index" asp-controller="Kegiatan">Kegiatan</a>
                                 </li>
-                                <li>
-                                    <a href="#">Sub Kegiatan</a>
+                                <li class='@(ViewBag.Title == "Master Data Sub Kegiatan" ? "active" : "")'>
+                                    <a asp-action="Index" asp-controller="SubKegiatan">Sub Kegiatan</a>
                                 </li>
                                 <li>
-                                    <a href="#">Jenis Pengadaan</a>
+                                    <a asp-action="Index" asp-controller="JenisPengadaan">Jenis Pengadaan</a>
                                 </li>
                             </ul>
                         </li>
