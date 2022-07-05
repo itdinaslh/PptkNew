@@ -18,3 +18,8 @@
     background-color: var(--card-color);
     border-color: var(--border-color);
 }
+
+.sidebar-nav .metismenu > li .active > a {
+    font-weight: 700;
+    color: var(--primary-color);
+}

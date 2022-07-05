@@ -27,6 +27,7 @@ services.AddDbContext<AppDbContext>(options => {
     services.AddScoped<IKegiatan, KegiatanService>();
     services.AddScoped<ISubKegiatan, SubKegiatanService>();
     services.AddScoped<IJenisPengadaan, JenisPengadaanService>();
+    services.AddScoped<IRekening, RekeningService>();
 }
 
 services.AddAuthentication(options => {

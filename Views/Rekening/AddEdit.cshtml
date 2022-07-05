@@ -1,0 +1,30 @@
+﻿@model Rekening
+
+<form action="/master/rekening/store" method="post">
+    <div class="modal-header">
+        @if (Model.RekeningId != 0) {
+            <h4 class="model-title">Edit Rekening</h4>
+        }
+        else {
+            <h4 class="modal-title">Tambah Rekening</h4>
+        } 
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" name="id" value="{{$data->id}}">
+        <div class="form-group">
+            <label>Kode Rekening</label>
+            <input type="text" asp-for="KodeRekening" class="form-control" required autocomplete="off" autofocus />
+            <span asp-validation-for="KodeRekening" class="text-danger"></span>
+        </div> 
+        <div class="form-group">
+            <label>Nama Rekening</label>
+            <input type="text" asp-for="NamaRekening" class="form-control" required autocomplete="off" />
+            <span asp-validation-for="NamaRekening" class="text-danger"></span>
+        </div>  
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>
