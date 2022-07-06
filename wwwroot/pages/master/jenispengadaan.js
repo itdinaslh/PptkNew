@@ -12,6 +12,7 @@ function loadTable() {
         serverSide: true,
         processing: true,
         responsive: true,
+        stateSave: true,
         lengthMenu: [5, 10, 20],
         ajax: {
             url: '/api/master/jenis-pengadaan/list',

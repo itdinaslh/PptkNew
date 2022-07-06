@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PptkNew.Repositories;
 using PptkNew.Entities;
 using PptkNew.Models;
+using PptkNew.Helpers;
 using Microsoft.AspNetCore.Authorization;
 
 namespace PptkNew.Controllers;
@@ -41,5 +42,17 @@ public class SubKegiatanController : Controller
             SubKegiatan = sub,
             NamaKegiatan = sub.Kegiatan.NamaKegiatan
         });
+    }
+
+    public async Task<IActionResult> SaveDataAsync(SubKegiatanViewModel vm)
+    {
+        if (ModelState.IsValid)
+        {
+            await repo.SaveDataAsync(vm.SubKegiatan);
+
+            return Json(Result.Success());
+        }
+
+        return PartialView("~/Views/SubKegiatan/AddEdit.cshtml", vm);
     }
 }

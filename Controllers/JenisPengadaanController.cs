@@ -7,7 +7,7 @@ using PptkNew.Helpers;
 
 namespace PptkNew.Controllers;
 
-[Authorize(Roles = "PptkAdmin")]
+[Authorize]
 public class JenisPengadaanController : Controller
 {
     private readonly IJenisPengadaan repo;
