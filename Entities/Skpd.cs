@@ -32,5 +32,9 @@ namespace PptkNew.Entities
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
 
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
+
+        #nullable disable
+
+        public List<UserSkpd> UserSkpds { get; set; }
     }
 }

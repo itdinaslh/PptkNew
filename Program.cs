@@ -23,11 +23,13 @@ services.AddDbContext<AppDbContext>(options => {
 
 // Add Service to DI Container
 {
+    services.AddScoped<ISkpd, SkpdService>();
     services.AddScoped<IProg, ProgService>();
     services.AddScoped<IKegiatan, KegiatanService>();
     services.AddScoped<ISubKegiatan, SubKegiatanService>();
     services.AddScoped<IJenisPengadaan, JenisPengadaanService>();
     services.AddScoped<IRekening, RekeningService>();
+    services.AddScoped<IUserSkpd, UserSkpdService>();
 }
 
 services.AddAuthentication(options => {
