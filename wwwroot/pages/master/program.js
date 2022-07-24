@@ -19,9 +19,9 @@ function loadTable() {
             method: 'POST'
         },
         columns: [
-            { data: 'programId', name: 'programId', searchable: false, orderable: false },
-            { data: 'kodeProgram', name: 'kodeProgram' },
-            { data: 'namaProgram', name: 'namaProgram' },
+            { data: 'programId', name: 'programId', autowidth: true },
+            { data: 'kodeProgram', name: 'kodeProgram', autowidth: true },
+            { data: 'namaProgram', name: 'namaProgram', autowidth: true },
             {
                 "render": function (data, type, row) {
                     return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/program/edit/?id="

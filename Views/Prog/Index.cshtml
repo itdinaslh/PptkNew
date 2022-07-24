@@ -18,6 +18,7 @@
     </div>
 </div>
 
+<!-- Page Header -->
 <div class="container-fluid">
     <div class="page-header">
         <div class="row">
@@ -28,7 +29,50 @@
                     <li class="breadcrumb-item">Program</li>
                 </ol>
             </div>
+            <div class="col-sm-6">
+                <div class="bookmark">
+                    <ul>
+                        <li>
+                            <a href="#" class="showMe" data-href="/master/program/create" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Add">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tblData" class="display datatables">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Kode Program</th>
+                                    <th>Nama Program</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+
+@section pluginjs {
+    <script src="~/admin/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/modalForm.js"></script>
+}
+
+@section scripts {
+    <script src="~/pages/master/program.js"></script>
+}
