@@ -29,5 +29,7 @@ namespace PptkNew.Entities
         public int? KegiatanId { get; set; }
 
         public Kegiatan Kegiatan { get; set; }
+
+        public List<TransKegiatan> TransKegiatans { get; set; }
     }
 }

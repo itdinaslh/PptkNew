@@ -36,5 +36,7 @@ namespace PptkNew.Entities
         #nullable disable
 
         public List<UserSkpd> UserSkpds { get; set; }
+
+        public List<TransKegiatan> TransKegiatans { get; set; }
     }
 }
