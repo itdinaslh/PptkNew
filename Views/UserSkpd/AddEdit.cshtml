@@ -1,8 +1,8 @@
-@model UserSkpd
+@model UserSkpdViewModel
 
-<form action="/administrtator/subkegiatan/store" method="post">
+<form action="/administrator/user-skpd/store" method="post">
     <div class="modal-header">
-        @if (Model.UserSkpdId != Guid.Empty) {
+        @if (Model.UserSkpd!.UserSkpdId != Guid.Empty) {
             <h4 class="model-title">Edit User SKPD</h4>
         }
         else {
@@ -11,16 +11,21 @@
         <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
-        <input type="hidden" asp-for="UserSkpdId">
+        <input type="hidden" asp-for="UserSkpd!.UserSkpdId">
         <div class="form-group">
             <label>Username</label>
-            <input type="text" asp-for="UserName" class="form-control" required autocomplete="off" autofocus />
-            <span asp-validation-for="UserName" class="text-danger"></span>
+            <input type="text" asp-for="UserSkpd!.UserName" class="form-control" required autocomplete="off" autofocus />
+            <span asp-validation-for="UserSkpd!.UserName" class="text-danger"></span>
         </div> 
         <div class="form-group">
             <label>SKPD</label>
-            <select asp-for="SkpdId" class="form-control" id="cbSkpd" required></select>
-            <span asp-validation-for="SkpdId" class="text-danger"></span>
+            <select asp-for="UserSkpd!.SkpdId" class="form-control" id="cbSkpd" required>
+                @if (Model.SkpdName != string.Empty)
+                {
+                    <option value="@Model.UserSkpd.SkpdId">@Model.SkpdName</option>
+                }
+            </select>
+            <span asp-validation-for="UserSkpd!.SkpdId" class="text-danger"></span>
         </div>
     </div>
     <div class="modal-footer">
