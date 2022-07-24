@@ -67,8 +67,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#Kegiatan" ><i class="fa fa-pencil"></i><span>Kegiatan</span></a>                            
+                        <li class='@(ViewBag.Title == "Transaksi Kegiatan" ? "active" : "")'>
+                            <a asp-controller="TransKegiatan" asp-action="Index" ><i class="fa fa-pencil"></i><span>Kegiatan</span></a>                            
                         </li>
                         @if (User.IsInRole("PptkAdmin")) {
                             <li class='@(ViewBag.Parent == "Master" ? "active" : "")'>

@@ -30,6 +30,7 @@ services.AddDbContext<AppDbContext>(options => {
     services.AddScoped<IJenisPengadaan, JenisPengadaanService>();
     services.AddScoped<IRekening, RekeningService>();
     services.AddScoped<IUserSkpd, UserSkpdService>();
+    services.AddScoped<ITransKegiatan, TransKegiatanService>();
 }
 
 services.AddAuthentication(options => {
@@ -38,7 +39,7 @@ services.AddAuthentication(options => {
 
 .AddCookie(options => {
     options.LoginPath = "/login";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     options.SlidingExpiration = false;
     options.AccessDeniedPath = "/account/denied";
 })
