@@ -19,7 +19,7 @@ function loadTable() {
             method: 'POST'
         },
         columns: [
-            { data: 'kegiatanId', name: 'kegiatanId', searchable: false, orderable: false },
+            { data: 'kegiatanId', name: 'kegiatanId' },
             { data: 'kodeKegiatan', name: 'kodeKegiatan' },
             { data: 'namaKegiatan', name: 'namaKegiatan' },
             {

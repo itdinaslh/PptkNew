@@ -3,12 +3,12 @@
 <form action="/master/program/store" method="post">
     <div class="modal-header">
         @if (Model.ProgramId != 0) {
-            <h4 class="model-title">Edit Program</h4>
+            <h5 class="model-title">Edit Program</h5>
         }
         else {
-            <h4 class="modal-title">Tambah Program</h4>
+            <h5 class="modal-title">Tambah Program</h5>
         } 
-        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
         <input type="hidden" name="id" value="{{$data->id}}">
@@ -18,13 +18,13 @@
             <span asp-validation-for="KodeProgram" class="text-danger"></span>
         </div> 
         <div class="form-group">
-            <label>Kode Program</label>
-            <input type="text" asp-for="NamaProgram" class="form-control" required autocomplete="off" />
+            <label>Nama Program</label>
+            <textarea class="form-control" rows="3" asp-for="NamaProgram"></textarea>
             <span asp-validation-for="NamaProgram" class="text-danger"></span>
         </div>  
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-success">Save</button>
     </div>
 </form>

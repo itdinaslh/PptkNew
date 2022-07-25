@@ -46,7 +46,21 @@
                 </div>
             </li>
             <li>
-                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Program" ? "active" : "")' asp-controller="Prog" asp-action="Index"><i data-feather="anchor"></i><span>Program</span></a>
+                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Program" ? "active" : "")' asp-controller="Prog" asp-action="Index"><i data-feather="book"></i><span>Program</span></a>
+            </li>
+            <li>
+                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Kegiatan" ? "active" : "")' asp-controller="Kegiatan" asp-action="Index"><i data-feather="calendar"></i><span>Kegiatan</span></a>
+            </li>
+            <li>
+                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Sub Kegiatan" ? "active" : "")' asp-controller="SubKegiatan" asp-action="Index"><i data-feather="git-branch"></i><span>Sub Kegiatan</span></a>
+            </li>
+            <li>
+                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Jenis Pengadaan" ? "active" : "")' asp-controller="JenisPengadaan" asp-action="Index"><i data-feather="list"></i><span>Jenis Pengadaan</span></a>
+            </li>
+            <li class="sidebar-main-title">
+                <div>
+                    <h6>Administrator</h6>
+                </div>
             </li>
         </ul>
         </div>

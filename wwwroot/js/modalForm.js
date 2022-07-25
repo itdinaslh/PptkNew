@@ -44,7 +44,7 @@ $(document).on('shown.bs.modal', function () {
 $(document).on('click', '.showMe', function () {
     $('#myModalContent').load($(this).attr('data-href'), function () {
 
-        $('#myModal').modal();
+        $('#myModal').modal('show');
 
         bindForm(this);
     });

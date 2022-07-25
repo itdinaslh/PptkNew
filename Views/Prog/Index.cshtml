@@ -10,8 +10,8 @@
 }
 
 <!--Modal Window-->
-<div id='myModal' class='modal fade in' data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
+<div id='myModal' class='modal fade in' role="dialog" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div id='myModalContent'></div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="bookmark">
                     <ul>
                         <li>
-                            <a href="#" class="showMe" data-href="/master/program/create" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Add">
+                            <a href="javascript:void(0)" class="showMe" data-href="/master/program/create" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Add">
                                 <i data-feather="plus"></i>
                             </a>
                         </li>
@@ -50,7 +50,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="">                        
                         <table id="tblData" class="display datatables">
                             <thead>
                                 <tr>
@@ -69,10 +69,11 @@
 </div>
 
 @section pluginjs {
-    <script src="~/admin/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/js/modalForm.js"></script>
+    <script src="~/admin/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>   
+    <script src="~/lib/sweetalert/sweetalert2.all.min.js"></script> 
 }
 
 @section scripts {
+    <script src="~/js/modalForm.js"></script>
     <script src="~/pages/master/program.js"></script>
 }

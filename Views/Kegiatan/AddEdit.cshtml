@@ -8,7 +8,7 @@
         else {
             <h4 class="modal-title">Tambah Master Kegiatan</h4>
         } 
-        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
         <input type="hidden" asp-for="KegiatanId">
@@ -19,12 +19,12 @@
         </div> 
         <div class="form-group">
             <label>Nama Kegiatan</label>
-            <input type="text" asp-for="NamaKegiatan" class="form-control" required autocomplete="off" />
+            <textarea class="form-control" rows="3" asp-for="NamaKegiatan"></textarea>
             <span asp-validation-for="NamaKegiatan" class="text-danger"></span>
         </div>  
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-success">Save</button>
     </div>
 </form>
