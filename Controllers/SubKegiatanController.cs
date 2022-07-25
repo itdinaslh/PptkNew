@@ -44,6 +44,7 @@ public class SubKegiatanController : Controller
         });
     }
 
+    [HttpPost("/master/subkegiatan/store")]
     public async Task<IActionResult> SaveDataAsync(SubKegiatanViewModel vm)
     {
         if (ModelState.IsValid)
