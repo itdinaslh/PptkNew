@@ -26,9 +26,6 @@ public class TransKegiatan {
 
     public int RekeningId { get; set; }
 
-    [Required(ErrorMessage = "Jumlah anggaran wajib diisi")]
-    public double Anggaran { get; set; }
-
     public DateTime? CreatedAt { get; set; } = DateTime.Now;
 
     public DateTime? UpdatedAt { get; set; } = DateTime.Now;

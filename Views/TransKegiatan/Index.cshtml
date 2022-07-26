@@ -1,3 +1,136 @@
 ﻿@{    
     ViewBag.Title = "Transaksi Kegiatan";
 }
+
+<!-- Page Header -->
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Transaksi Kegiatan</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Transaksi</li>
+                    <li class="breadcrumb-item">Kegiatan</li>
+                </ol>
+            </div>
+            <div class="col-sm-6">
+                <div class="bookmark">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" class="showMe" data-href="/transaksi/kegiatan/create" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Add">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="container-fluid general-widget">
+    <div class="row">
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden border-0">
+                <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                        <div class="media-body"><span class="m-0">Total Kegiatan</span>
+                            <h4 class="mb-0 counter">55</h4><i class="icon-bg" data-feather="database"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden border-0">
+                <div class="bg-success b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="book"></i></div>
+                        <div class="media-body"><span class="m-0">Total Kontrak</span>
+                            <h4 class="mb-0 counter">135</h4><i class="icon-bg" data-feather="book"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden border-0">
+                <div class="bg-danger b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="book-open"></i></div>
+                        <div class="media-body"><span class="m-0">Total</span>
+                            <h4 class="mb-0 counter">150</h4><i class="icon-bg" data-feather="book-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden border-0">
+                <div class="bg-info b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="book-open"></i></div>
+                        <div class="media-body"><span class="m-0">Total Budget</span>
+                            <h4 class="mb-0 counter">15,3M</h4><i class="icon-bg" data-feather="book-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sorting Box -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <form class="theme-form">
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label" for="cbTahun">Tahun</label>
+                    <div class="col-sm-9">
+                        <select id="cbTahun" class="form-control">
+                            <option value="2022">2022</option>
+                        </select>
+                    </div>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th class="align-middle text-center">Kode Program</th>
+                        <th class="align-middle text-center">Program</th>
+                        <th class="align-middle text-center">Kode Kegiatan</th>
+                        <th class="align-middle text-center">Kegiatan</th>
+                        <th class="align-middle text-center">Kode Sub Kegiatan</th>
+                        <th class="align-middle text-center">Sub Kegiatan</th>
+                        <th class="align-middle text-center">Kode PASK</th>
+                        <th class="align-middle text-center">Anggaran</th>
+                        <th class="align-middle text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.03.04</td>
+                        <td>PROGRAM PENGEMBANGAN SISTEM DAN PENGELOLAAN PERSAMPAHAN REGIONAL</td>
+                        <td>1.03.04.2.01</td>
+                        <td>Pengembangan Sistem dan Pengelolaan Persampahan di Daerah Kabupaten/Kota</td>
+                        <td>1.03.04.2.01.05</td>
+                        <td>Peningkatan TPA/TPST/SPA/TPS-3R/TPS</td>
+                        <td>1.03.04.2.01.05 .001</td>
+                        <td></td>
+                        <td><a href="#" class="btn btn-success" style="width: 100%;">Detail</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

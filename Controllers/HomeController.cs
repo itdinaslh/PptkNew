@@ -15,9 +15,15 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet("/dashboard")]
     public IActionResult Index()
     {
         return View();
+    }
+
+    [HttpGet("/")]
+    public IActionResult Main() {
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()

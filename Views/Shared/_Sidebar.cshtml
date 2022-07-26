@@ -18,14 +18,11 @@
                     <h6>Main Menu</h6>
                 </div>
             </li>
-            <li>
-                <a class="nav-link menu-title link-nav" href="javascript:void(0)"><i data-feather="home"></i><span>Dashboard</span></a>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="Home" asp-action="Index"><i data-feather="home"></i><span>Dashboard</span></a>
             </li>
-            <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Kegiatan</span></a>
-                <ul class="nav-submenu menu-content">
-                    <li><a href="general-widget.html">General</a></li>
-                    <li><a href="chart-widget.html">Chart</a></li>
-                </ul>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="TransKegiatan" asp-action="Index"><i data-feather="airplay"></i><span>Kegiatan</span></a>                
             </li>
             <li>
                 
@@ -35,26 +32,28 @@
                     <h6>Master Data</h6>
                 </div>
             </li>
-            <li>
-                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Program" ? "active" : "")' asp-controller="Prog" asp-action="Index"><i data-feather="book"></i><span>Program</span></a>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="Prog" asp-action="Index"><i data-feather="book"></i><span>Program</span></a>
             </li>
-            <li>
-                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Kegiatan" ? "active" : "")' asp-controller="Kegiatan" asp-action="Index"><i data-feather="calendar"></i><span>Master Kegiatan</span></a>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="Kegiatan" asp-action="Index"><i data-feather="calendar"></i><span>Master Kegiatan</span></a>
             </li>
-            <li>
-                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Sub Kegiatan" ? "active" : "")' asp-controller="SubKegiatan" asp-action="Index"><i data-feather="git-branch"></i><span>Sub Kegiatan</span></a>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="SubKegiatan" asp-action="Index"><i data-feather="git-branch"></i><span>Sub Kegiatan</span></a>
             </li>
-            <li>
-                <a class='nav-link menu-title link-nav @(ViewBag.Title == "Master Data Jenis Pengadaan" ? "active" : "")' asp-controller="JenisPengadaan" asp-action="Index"><i data-feather="list"></i><span>Jenis Pengadaan</span></a>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="JenisPengadaan" asp-action="Index"><i data-feather="list"></i><span>Jenis Pengadaan</span></a>
             </li>
-            <li class="sidebar-main-title">
-                <div>
-                    <h6>Administrator</h6>
-                </div>
-            </li>
-            <li>
-                <a href="javascript:void(0)" class="nav-link menu-title link-nav">User SKPD</a>
-            </li>
+            @if (User.IsInRole("SysAdmin")) {
+                <li class="sidebar-main-title">
+                    <div>
+                        <h6>Administrator</h6>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="nav-link menu-title link-nav">User SKPD</a>
+                </li>
+            }            
         </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

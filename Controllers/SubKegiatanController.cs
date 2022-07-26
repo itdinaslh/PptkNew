@@ -31,17 +31,20 @@ public class SubKegiatanController : Controller
         });
     }
 
-#nullable disable
     [HttpGet("/master/subkegiatan/edit")]
     public async Task<IActionResult> Edit(int id)
     {
-        SubKegiatan sub = await repo.SubKegiatans.FirstOrDefaultAsync(s => s.SubKegiatanId == id);
+        SubKegiatan? sub = await repo.SubKegiatans.FirstOrDefaultAsync(s => s.SubKegiatanId == id);
 
-        return PartialView("~/Views/SubKegiatan/AddEdit.cshtml", new SubKegiatanViewModel
-        {
-            SubKegiatan = sub,
-            NamaKegiatan = sub.Kegiatan.NamaKegiatan
-        });
+        if (sub is not null) {
+            return PartialView("~/Views/SubKegiatan/AddEdit.cshtml", new SubKegiatanViewModel
+            {
+                SubKegiatan = sub,
+                NamaKegiatan = sub.Kegiatan.NamaKegiatan
+            });
+        }
+
+        return NotFound();
     }
 
     [HttpPost("/master/subkegiatan/store")]
