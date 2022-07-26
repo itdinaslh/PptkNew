@@ -18,4 +18,9 @@ public class TransKegiatanController : Controller
     {
         return View();
     }
+
+    [HttpGet("/transaksi/detail")]
+    public IActionResult Detail() {
+        return View();
+    }
 }
