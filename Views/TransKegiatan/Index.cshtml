@@ -70,9 +70,9 @@
             <div class="card o-hidden border-0">
                 <div class="bg-info b-r-4 card-body">
                     <div class="media static-top-widget">
-                        <div class="align-self-center text-center"><i data-feather="book-open"></i></div>
+                        <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
                         <div class="media-body"><span class="m-0">Total Budget</span>
-                            <h4 class="mb-0 counter">15,3M</h4><i class="icon-bg" data-feather="book-open"></i>
+                            <h4 class="mb-0 counter">15,3M</h4><i class="icon-bg" data-feather="dollar-sign"></i>
                         </div>
                     </div>
                 </div>
@@ -103,34 +103,39 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-bordered table-responsive">
-                <thead>
-                    <tr>
-                        <th class="align-middle text-center">Kode Program</th>
-                        <th class="align-middle text-center">Program</th>
-                        <th class="align-middle text-center">Kode Kegiatan</th>
-                        <th class="align-middle text-center">Kegiatan</th>
-                        <th class="align-middle text-center">Kode Sub Kegiatan</th>
-                        <th class="align-middle text-center">Sub Kegiatan</th>
-                        <th class="align-middle text-center">Kode PASK</th>
-                        <th class="align-middle text-center">Anggaran</th>
-                        <th class="align-middle text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1.03.04</td>
-                        <td>PROGRAM PENGEMBANGAN SISTEM DAN PENGELOLAAN PERSAMPAHAN REGIONAL</td>
-                        <td>1.03.04.2.01</td>
-                        <td>Pengembangan Sistem dan Pengelolaan Persampahan di Daerah Kabupaten/Kota</td>
-                        <td>1.03.04.2.01.05</td>
-                        <td>Peningkatan TPA/TPST/SPA/TPS-3R/TPS</td>
-                        <td>1.03.04.2.01.05 .001</td>
-                        <td></td>
-                        <td><a asp-controller="TransKegiatan" asp-action="Detail" class="btn btn-success" style="width: 100%;">Detail</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <div class="card-body" style="padding: 0 0 30px 0;">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th class="align-middle text-center">Kode Program</th>
+                                <th class="align-middle text-center">Program</th>
+                                <th class="align-middle text-center">Kode Kegiatan</th>
+                                <th class="align-middle text-center">Kegiatan</th>
+                                <th class="align-middle text-center">Kode Sub Kegiatan</th>
+                                <th class="align-middle text-center">Sub Kegiatan</th>
+                                <th class="align-middle text-center">Kode PASK</th>
+                                <th class="align-middle text-center">Anggaran</th>
+                                <th class="align-middle text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.03.04</td>
+                                <td>PROGRAM PENGEMBANGAN SISTEM DAN PENGELOLAAN PERSAMPAHAN REGIONAL</td>
+                                <td>1.03.04.2.01</td>
+                                <td>Pengembangan Sistem dan Pengelolaan Persampahan di Daerah Kabupaten/Kota</td>
+                                <td>1.03.04.2.01.05</td>
+                                <td>Peningkatan TPA/TPST/SPA/TPS-3R/TPS</td>
+                                <td>1.03.04.2.01.05.001</td>
+                                <td class="text-end">490.050.836</td>
+                                <td><a asp-controller="TransKegiatan" asp-action="Detail" class="btn btn-success" style="width: 100%;">Detail</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
