@@ -3,5 +3,6 @@
         "activityBar.background": "#293026",
         "titleBar.activeBackground": "#293026",
         "titleBar.activeForeground": "#FAFBFA"
-    }
+    },
+    "editor.fontSize": 12
 }
