@@ -1,3 +1,5 @@
+@model PptkNew.Models.Transaksi.DetailVM
+
 @{    
     ViewBag.Title = "Detail Kegiatan";
 }
@@ -78,7 +80,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label>Jenis Pengadaan</label>
+                                    <input type="text" class="form-control" name="" id="" value="Pengadaan Langsung" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label>Penjabaran Atas Sub Kegiatan</label>
                                     <textarea class="form-control" name="" id="" rows="2">Optimalisasi Jakarta Recycle Centre (JRC)</textarea>
@@ -98,6 +106,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body" style="padding; 0 0 30px 0;">
+                    <button type="button" class="btn btn-warning mb-3 showMe">Tambah</button>
                     <table class="table table-bordered table-striped table-responsive">
                         <thead>
                             <tr>
@@ -160,7 +169,8 @@
                             </tr>
                             <tr>
                                 <td class="text-end" colspan="3">Total</td>
-                                <td class="text-end">490.050.836</td>
+                                @*<td class="text-end">490.050.836</td>*@
+                                <td class="text-end">Rp @(Model.TransDetails is null ? 0 : Model.ComputeTotal().ToString("#.###"))</td>
                                 <td></td>
                             </tr>
                         </tbody>

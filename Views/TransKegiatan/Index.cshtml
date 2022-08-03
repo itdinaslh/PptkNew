@@ -1,4 +1,6 @@
-﻿@{    
+﻿@model PptkNew.Models.Transaksi.IndexVM
+
+@{    
     ViewBag.Title = "Transaksi Kegiatan";
 }
 
@@ -115,22 +117,37 @@
                                 <th class="align-middle text-center">Kode Sub Kegiatan</th>
                                 <th class="align-middle text-center">Sub Kegiatan</th>
                                 <th class="align-middle text-center">Kode PASK</th>
+                                <th class="align-middle text-center">Penjabaran</th>
                                 <th class="align-middle text-center">Anggaran</th>
                                 <th class="align-middle text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1.03.04</td>
-                                <td>PROGRAM PENGEMBANGAN SISTEM DAN PENGELOLAAN PERSAMPAHAN REGIONAL</td>
-                                <td>1.03.04.2.01</td>
-                                <td>Pengembangan Sistem dan Pengelolaan Persampahan di Daerah Kabupaten/Kota</td>
-                                <td>1.03.04.2.01.05</td>
-                                <td>Peningkatan TPA/TPST/SPA/TPS-3R/TPS</td>
-                                <td>1.03.04.2.01.05.001</td>
-                                <td class="text-end">490.050.836</td>
-                                <td><a asp-controller="TransKegiatan" asp-action="Detail" class="btn btn-success" style="width: 100%;">Detail</a></td>
-                            </tr>
+                            @if (Model.TransKegiatans!.Count() == 0)
+                            {
+                                <tr>
+                                    <td colspan="10" class="text-center">Tidak Ada Data</td>
+                                </tr>
+                            } else
+                            {
+                                @foreach(var p in Model.TransKegiatans!)
+                                {
+                                    <tr>
+                                        <td>@p.Prog.KodeProgram</td>
+                                        <td>@p.Prog.NamaProgram</td>
+                                        <td>@p.SubKegiatan.Kegiatan.KodeKegiatan</td>
+                                        <td>@p.SubKegiatan.Kegiatan.NamaKegiatan</td>
+                                        <td>@p.SubKegiatan.KodeSubKegiatan</td>
+                                        <td>@p.SubKegiatan.NamaSubKegiatan</td>
+                                        <td>@p.KodePASK</td>
+                                        <td>@p.Penjabaran</td>
+                                        <td>0</td>
+                                        <td>
+                                            <a href="#" class="btn btn-success" style="width: 100%;">Detail</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }                            
                         </tbody>
                     </table>
                 </div>

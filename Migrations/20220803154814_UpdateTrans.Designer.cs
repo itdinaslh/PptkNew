@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PptkNew.Data;
@@ -11,9 +12,10 @@ using PptkNew.Data;
 namespace PptkNew.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220803154814_UpdateTrans")]
+    partial class UpdateTrans
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,36 +236,6 @@ namespace PptkNew.Migrations
                     b.ToTable("SubKegiatan");
                 });
 
-            modelBuilder.Entity("PptkNew.Entities.TransDetails", b =>
-                {
-                    b.Property<Guid>("TransDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<double>("Anggaran")
-                        .HasColumnType("double precision");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("RekeningId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("TransKegiatanId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("TransDetailId");
-
-                    b.HasIndex("RekeningId");
-
-                    b.HasIndex("TransKegiatanId");
-
-                    b.ToTable("TransDetails");
-                });
-
             modelBuilder.Entity("PptkNew.Entities.TransKegiatan", b =>
                 {
                     b.Property<long>("TransKegiatanId")
@@ -291,6 +263,9 @@ namespace PptkNew.Migrations
                     b.Property<int>("ProgId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("RekeningId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("SkpdId")
                         .HasColumnType("integer");
 
@@ -308,6 +283,8 @@ namespace PptkNew.Migrations
                     b.HasIndex("JenisPengadaanId");
 
                     b.HasIndex("ProgId");
+
+                    b.HasIndex("RekeningId");
 
                     b.HasIndex("SkpdId");
 
@@ -355,25 +332,6 @@ namespace PptkNew.Migrations
                     b.Navigation("Kegiatan");
                 });
 
-            modelBuilder.Entity("PptkNew.Entities.TransDetails", b =>
-                {
-                    b.HasOne("PptkNew.Entities.Rekening", "Rekening")
-                        .WithMany("TransDetails")
-                        .HasForeignKey("RekeningId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PptkNew.Entities.TransKegiatan", "TransKegiatan")
-                        .WithMany("TransDetails")
-                        .HasForeignKey("TransKegiatanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rekening");
-
-                    b.Navigation("TransKegiatan");
-                });
-
             modelBuilder.Entity("PptkNew.Entities.TransKegiatan", b =>
                 {
                     b.HasOne("PptkNew.Entities.JenisPengadaan", null)
@@ -385,6 +343,10 @@ namespace PptkNew.Migrations
                         .HasForeignKey("ProgId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PptkNew.Entities.Rekening", null)
+                        .WithMany("TransKegiatans")
+                        .HasForeignKey("RekeningId");
 
                     b.HasOne("PptkNew.Entities.Skpd", "Skpd")
                         .WithMany("TransKegiatans")
@@ -433,7 +395,7 @@ namespace PptkNew.Migrations
 
             modelBuilder.Entity("PptkNew.Entities.Rekening", b =>
                 {
-                    b.Navigation("TransDetails");
+                    b.Navigation("TransKegiatans");
                 });
 
             modelBuilder.Entity("PptkNew.Entities.Skpd", b =>
@@ -446,11 +408,6 @@ namespace PptkNew.Migrations
             modelBuilder.Entity("PptkNew.Entities.SubKegiatan", b =>
                 {
                     b.Navigation("TransKegiatans");
-                });
-
-            modelBuilder.Entity("PptkNew.Entities.TransKegiatan", b =>
-                {
-                    b.Navigation("TransDetails");
                 });
 #pragma warning restore 612, 618
         }

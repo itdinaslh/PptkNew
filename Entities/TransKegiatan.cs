@@ -24,7 +24,8 @@ public class TransKegiatan {
     [MaxLength(255)]
     public string Penjabaran { get; set; }
 
-    public int RekeningId { get; set; }
+    [Required(ErrorMessage = "Tahun wajib diisi")]
+    public int Tahun { get; set; } = DateTime.Now.Year;
 
     public DateTime? CreatedAt { get; set; } = DateTime.Now;
 
@@ -36,5 +37,6 @@ public class TransKegiatan {
 
     public SubKegiatan SubKegiatan { get; set; }
 
-    public Rekening Rekening { get; set; }
+    public List<TransDetails> TransDetails { get; set; }
+    
 }

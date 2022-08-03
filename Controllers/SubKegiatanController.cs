@@ -33,8 +33,8 @@ public class SubKegiatanController : Controller
 
     [HttpGet("/master/subkegiatan/edit")]
     public async Task<IActionResult> Edit(int id)
-    {
-        SubKegiatan? sub = await repo.SubKegiatans.FirstOrDefaultAsync(s => s.SubKegiatanId == id);
+    {        
+        SubKegiatan? sub = await repo.SubKegiatans.Include(k => k.Kegiatan).FirstOrDefaultAsync(s => s.SubKegiatanId == id);
 
         if (sub is not null) {
             return PartialView("~/Views/SubKegiatan/AddEdit.cshtml", new SubKegiatanViewModel
