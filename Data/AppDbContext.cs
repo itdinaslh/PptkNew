@@ -17,5 +17,7 @@ namespace PptkNew.Data
         public DbSet<UserSkpd> UserSkpds { get; set; }
 
         public DbSet<TransKegiatan> TransKegiatans { get; set; }
+
+        public DbSet<TransDetails> TransDetails { get; set; }
     }
 }

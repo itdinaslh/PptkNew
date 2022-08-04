@@ -31,6 +31,7 @@ services.AddDbContext<AppDbContext>(options => {
     services.AddScoped<IRekening, RekeningService>();
     services.AddScoped<IUserSkpd, UserSkpdService>();
     services.AddScoped<ITransKegiatan, TransKegiatanService>();
+    services.AddScoped<ITransDetails, TransDetailService>();
 }
 
 services.AddAuthentication(options => {

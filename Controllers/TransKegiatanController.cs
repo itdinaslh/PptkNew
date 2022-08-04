@@ -3,16 +3,19 @@ using PptkNew.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PptkNew.Models.Transaksi;
+using PptkNew.Helpers;
 
 namespace PptkNew.Controllers;
 
 public class TransKegiatanController : Controller
 {
     private readonly ITransKegiatan repo;
+    private readonly ITransDetails details;
 
-    public TransKegiatanController(ITransKegiatan repo)
+    public TransKegiatanController(ITransKegiatan repo, ITransDetails details)
     {
         this.repo = repo;
+        this.details = details;
     }
 
     [HttpGet("/transaksi/index")]
@@ -24,12 +27,55 @@ public class TransKegiatanController : Controller
             .Where(sk => sk.SkpdId == 1)
             .Include(s => s.SubKegiatan)
             .Include(k => k.SubKegiatan.Kegiatan)
-            .Include(p => p.Prog);
+            .Include(p => p.Prog)
+            .Include(d => d.TransDetails);
         return View(new IndexVM { TransKegiatans = transKegiatans});
     }
 
     [HttpGet("/transaksi/detail")]
-    public IActionResult Detail() {
-        return View(new DetailVM());
+    public async Task<IActionResult> Detail(long? trans) {
+        TransKegiatan? thisTrans = await repo.TransKegiatans
+            .Include(p => p.Prog)
+            .Include(sub => sub.SubKegiatan)
+            .Include(k => k.SubKegiatan.Kegiatan)
+            .Include(t => t.TransDetails)
+            .FirstOrDefaultAsync(t => t.TransKegiatanId == trans);
+
+        if (thisTrans is null)
+        {
+            return NotFound();
+        }
+
+        return View(new DetailVM
+        {
+            TransKegiatan = thisTrans,
+            TransDetails = details.TransDetails.Where(t => t.TransKegiatanId == trans)
+        });
+    }
+
+    [HttpGet("/transaksi/detail/create")]
+    public IActionResult CreateDetail(long id)
+    {
+        return PartialView(new CreateDetailVM
+        {
+            TransDetail = new TransDetails
+            {
+                TransKegiatanId = id
+            },
+            TransKegiatanId = id
+        });
+    }
+
+    [HttpPost("/transaksi/detail/store")]
+    public async Task<IActionResult> Store(CreateDetailVM model) 
+    {
+        if (ModelState.IsValid)
+        {
+            await details.SaveDataAsync(model.TransDetail);
+
+            return Json(Result.Success());
+        }
+
+        return PartialView(model);
     }
 }

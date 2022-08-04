@@ -141,9 +141,9 @@
                                         <td>@p.SubKegiatan.NamaSubKegiatan</td>
                                         <td>@p.KodePASK</td>
                                         <td>@p.Penjabaran</td>
-                                        <td>0</td>
+                                        <td>@p.TransDetails.Where(t => t.TransKegiatanId == p.TransKegiatanId).Sum(e => e.Anggaran).ToString("#,###")</td>
                                         <td>
-                                            <a href="#" class="btn btn-success" style="width: 100%;">Detail</a>
+                                            <a asp-controller="TransKegiatan" asp-action="Detail" asp-route-trans="@p.TransKegiatanId" class="btn btn-success" style="width: 100%;">Detail</a>
                                         </td>
                                     </tr>
                                 }

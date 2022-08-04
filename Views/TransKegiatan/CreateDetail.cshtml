@@ -1,0 +1,34 @@
+﻿@model PptkNew.Models.Transaksi.CreateDetailVM
+
+<form action="/transaksi/detail/store" method="post">
+    <div class="modal-header">
+        @if (Model.TransDetail!.TransDetailId != Guid.Empty) {
+            <h4 class="model-title">Edit Transaksi</h4>
+        }
+        else {
+            <h4 class="modal-title">Tambah Transaksi</h4>
+        } 
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" asp-for="TransDetail!.TransDetailId">
+        <input type="hidden" asp-for="TransDetail!.TransKegiatanId" />
+        <div class="form-group">
+            <label>Rekening</label>
+            <select class="form-control" asp-for="TransDetail!.RekeningId" id="sRekening">
+                @if (Model.NamaRekening != String.Empty)
+                {
+                    <option value="@Model.TransDetail!.RekeningId" selected="selected">@Model.NamaRekening</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Anggaran</label>
+            <input type="number" class="form-control" asp-for="TransDetail!.Anggaran" /> 
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

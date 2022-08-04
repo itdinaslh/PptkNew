@@ -42,6 +42,9 @@
                 <a class='nav-link menu-title link-nav' asp-controller="SubKegiatan" asp-action="Index"><i data-feather="git-branch"></i><span>Sub Kegiatan</span></a>
             </li>
             <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="Rekening" asp-action="Index"><i data-feather="menu"></i><span>Rekening</span></a>
+            </li>
+            <li class="dropdown">
                 <a class='nav-link menu-title link-nav' asp-controller="JenisPengadaan" asp-action="Index"><i data-feather="list"></i><span>Jenis Pengadaan</span></a>
             </li>
             @if (User.IsInRole("SysAdmin")) {

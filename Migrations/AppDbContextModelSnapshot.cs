@@ -46,7 +46,7 @@ namespace PptkNew.Migrations
 
                     b.HasKey("JenisPengadaanId");
 
-                    b.ToTable("JenisPengadaan");
+                    b.ToTable("JenisPengadaan", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.Kegiatan", b =>
@@ -81,7 +81,7 @@ namespace PptkNew.Migrations
                     b.HasIndex("KodeKegiatan")
                         .IsUnique();
 
-                    b.ToTable("Kegiatan");
+                    b.ToTable("Kegiatan", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.Prog", b =>
@@ -115,7 +115,7 @@ namespace PptkNew.Migrations
                     b.HasIndex("KodeProgram")
                         .IsUnique();
 
-                    b.ToTable("Program");
+                    b.ToTable("Program", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.Rekening", b =>
@@ -150,7 +150,7 @@ namespace PptkNew.Migrations
                     b.HasIndex("KodeRekening")
                         .IsUnique();
 
-                    b.ToTable("Rekening");
+                    b.ToTable("Rekening", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.Skpd", b =>
@@ -192,7 +192,7 @@ namespace PptkNew.Migrations
                     b.HasIndex("SkpdCode")
                         .IsUnique();
 
-                    b.ToTable("Skpd");
+                    b.ToTable("Skpd", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.SubKegiatan", b =>
@@ -231,7 +231,7 @@ namespace PptkNew.Migrations
                     b.HasIndex("KodeSubKegiatan")
                         .IsUnique();
 
-                    b.ToTable("SubKegiatan");
+                    b.ToTable("SubKegiatan", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.TransDetails", b =>
@@ -261,7 +261,7 @@ namespace PptkNew.Migrations
 
                     b.HasIndex("TransKegiatanId");
 
-                    b.ToTable("TransDetails");
+                    b.ToTable("TransDetails", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.TransKegiatan", b =>
@@ -313,7 +313,7 @@ namespace PptkNew.Migrations
 
                     b.HasIndex("SubKegiatanId");
 
-                    b.ToTable("TransKegiatan");
+                    b.ToTable("TransKegiatan", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.UserSkpd", b =>
@@ -343,7 +343,7 @@ namespace PptkNew.Migrations
 
                     b.HasIndex("SkpdId");
 
-                    b.ToTable("UserSkpd");
+                    b.ToTable("UserSkpd", (string)null);
                 });
 
             modelBuilder.Entity("PptkNew.Entities.SubKegiatan", b =>

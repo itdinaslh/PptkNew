@@ -53,5 +53,19 @@ namespace PptkNew.Controllers.api
 
             return Ok(jsonData);
         }
-    }
+
+        [HttpGet("/api/master/rekening/search")]
+        public async Task<IActionResult> SearchRekening(string? term)
+        {
+            var data = await repo.Rekenings
+                .Where(k => !String.IsNullOrEmpty(term) ?
+                    k.NamaRekening.ToLower().Contains(term.ToLower()) || k.KodeRekening.ToLower().Contains(term.ToLower()) : true
+                ).Select(s => new {
+                    id = s.RekeningId,
+                    namaRekening = s.KodeRekening + " - " + s.NamaRekening
+                }).Take(10).ToListAsync();
+
+            return Ok(data);
+        }
+    }    
 }

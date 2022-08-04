@@ -8,7 +8,7 @@ public class TransDetails
 {
 #nullable disable
     [Key]
-    public Guid TransDetailId { get; set; } = Guid.NewGuid();
+    public Guid TransDetailId { get; set; } = Guid.Empty;
 
     [Required]
     public long TransKegiatanId { get; set; }
