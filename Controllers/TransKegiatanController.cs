@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PptkNew.Models.Transaksi;
 using PptkNew.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PptkNew.Controllers;
 
+[Authorize]
 public class TransKegiatanController : Controller
 {
     private readonly ITransKegiatan repo;
@@ -30,6 +32,12 @@ public class TransKegiatanController : Controller
             .Include(p => p.Prog)
             .Include(d => d.TransDetails);
         return View(new IndexVM { TransKegiatans = transKegiatans});
+    }
+
+    [HttpGet("/transaksi/create")]
+    public IActionResult CreateMasterTrans()
+    {
+        return PartialView();
     }
 
     [HttpGet("/transaksi/detail")]
@@ -67,7 +75,7 @@ public class TransKegiatanController : Controller
     }
 
     [HttpPost("/transaksi/detail/store")]
-    public async Task<IActionResult> Store(CreateDetailVM model) 
+    public async Task<IActionResult> StoreDetails(CreateDetailVM model) 
     {
         if (ModelState.IsValid)
         {
@@ -77,5 +85,20 @@ public class TransKegiatanController : Controller
         }
 
         return PartialView(model);
+    }
+
+    [HttpPost("/transaksi/detail/delete")]
+    public async Task<IActionResult> DeleteDetails(Guid? id)
+    {
+        TransDetails? trans = await details.TransDetails.FirstOrDefaultAsync(t => t.TransDetailId == id);
+
+        if (trans is not null)
+        {
+            await details.DeleteDataAsync(id);
+
+            return Ok(Result.Success());
+        }
+
+        return Ok(Result.Failed());
     }
 }

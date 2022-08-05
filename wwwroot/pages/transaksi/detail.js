@@ -33,7 +33,8 @@ function loadTable() {
             {
                 "render": function (data, type, row) {
                     return "<button class='btn btn-sm btn-success showMe' style='margin-right:5px;' data-href='/master/transaksi/edit/?id="
-                        + row.transDetailId + "'><i class='fa fa-edit'></i></button><button class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></button>";
+                        + row.transDetailId + "'><i class='fa fa-edit'></i></button><button class='btn btn-sm btn-danger delBtn' data-id='"
+                        + row.transDetailId + "'><i class='fa fa-trash'></i></button > ";
                 }
             }
         ],
@@ -57,6 +58,26 @@ function ComputeTotal() {
         }
     });
 }
+
+function DeleteDetail(id) {
+    $.ajax({
+        url: '/transaksi/detail/delete/?id=' + id,
+        dataType: 'json',
+        method: 'POST',
+        success: function (response) {
+            if (response.success) {
+                loadTable();
+                ComputeTotal();
+            }
+        }
+    });
+}
+
+$(document).on('click', '.delBtn', function () {
+    var id = $(this).attr('data-id');
+
+    DeleteDetail(id);
+});
 
 $(document).on('shown.bs.modal', function () {
     $('#sRekening').select2({

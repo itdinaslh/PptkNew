@@ -4,6 +4,9 @@ using PptkNew.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
 using Microsoft.AspNetCore.Authorization;
+using PptkNew.Entities;
+using PptkNew.Helpers;
+
 namespace PptkNew.Controllers.api;
 
 [Route("api/[controller]")]
@@ -71,5 +74,5 @@ public class TransDetailsApiController : ControllerBase
         };
 
         return Ok(result);
-    }
+    }    
 }

@@ -54,4 +54,18 @@ public class ProgApiController : ControllerBase
 
         return Ok(jsonData);
     }
+
+    [HttpGet("/api/master/program/search")]
+    public async Task<IActionResult> SearchProgram(string? term)
+    {
+        var data = await repo.Progs
+            .Where(k => !String.IsNullOrEmpty(term) ?
+                k.NamaProgram.ToLower().Contains(term.ToLower()) || k.KodeProgram.ToLower().Contains(term.ToLower()) : true
+            ).Select(s => new {
+                id = s.ProgramId,
+                namaRekening = s.KodeProgram + " - " + s.NamaProgram
+            }).Take(10).ToListAsync();
+
+        return Ok(data);
+    }
 }

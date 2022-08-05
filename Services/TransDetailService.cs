@@ -15,6 +15,18 @@ public class TransDetailService : ITransDetails
 
     public IQueryable<TransDetails> TransDetails => context.TransDetails;
 
+    public async Task DeleteDataAsync(Guid? id)
+    {
+        TransDetails? data = await context.TransDetails.FindAsync(id);
+
+        if (data is not null)
+        {
+            context.Remove(data);
+
+            await context.SaveChangesAsync();
+        }
+    }
+
     public async Task SaveDataAsync(TransDetails transDetails)
     {
         if (transDetails.TransDetailId == Guid.Empty)
