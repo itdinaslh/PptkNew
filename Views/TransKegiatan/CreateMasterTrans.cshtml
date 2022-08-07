@@ -1,5 +1,32 @@
 ﻿<form action="/transaksi/master/store" method="post">
     <div class="modal-header">
-
+        <h4 class="modal-title">Tambah Transaksi</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Program</label>
+            <select class="form-control" id="sProgram"></select>
+        </div>
+        <div class="form-group">
+            <label>Kegiatan</label>
+            <select class="form-control" id="sKegiatan"></select>
+        </div>
+        <div class="form-group">
+            <label>Sub Kegiatan</label>
+            <select class="form-control" id="sSubKegiatan"></select>
+        </div>
+        <div class="form-group">
+            <label>Kode PASK</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Penjabaran Atas Sub Kegiatan</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
     </div>
 </form>

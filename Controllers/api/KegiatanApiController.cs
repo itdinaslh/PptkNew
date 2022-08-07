@@ -56,10 +56,11 @@ public class KegiatanApiController : ControllerBase
     {
         var data = await repo.Kegiatans            
             .Where(k => !String.IsNullOrEmpty(term) ?
-                k.NamaKegiatan.ToLower().Contains(term.ToLower()) : true
+                k.NamaKegiatan.ToLower().Contains(term.ToLower()) || 
+                k.KodeKegiatan.ToLower().Contains(term.ToLower()) : true
             ).Select(s => new {
                 id = s.KegiatanId,
-                namaKegiatan = s.NamaKegiatan
+                namaKegiatan = s.KodeKegiatan + " - " + s.NamaKegiatan
             }).Take(10).ToListAsync();
 
         return Ok(data);

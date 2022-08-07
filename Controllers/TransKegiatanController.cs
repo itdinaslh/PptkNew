@@ -34,7 +34,7 @@ public class TransKegiatanController : Controller
         return View(new IndexVM { TransKegiatans = transKegiatans});
     }
 
-    [HttpGet("/transaksi/create")]
+    [HttpGet("/transaksi/master/create")]
     public IActionResult CreateMasterTrans()
     {
         return PartialView();

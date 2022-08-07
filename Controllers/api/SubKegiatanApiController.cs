@@ -58,4 +58,19 @@ public class SubKegiatanApiController : ControllerBase
 
         return Ok(jsonData);
     }
+
+    [HttpGet("/api/master/subkegiatan/search")]
+    public async Task<IActionResult> SearchSubKegiatan(string? term)
+    {
+        var data = await repo.SubKegiatans
+            .Where(k => !String.IsNullOrEmpty(term) ?
+                k.NamaSubKegiatan.ToLower().Contains(term.ToLower()) ||
+                k.KodeSubKegiatan.ToLower().Contains(term.ToLower()) : true
+            ).Select(s => new {
+                id = s.SubKegiatanId,
+                namaKegiatan = s.KodeSubKegiatan + " - " + s.NamaSubKegiatan
+            }).Take(10).ToListAsync();
+
+        return Ok(data);
+    }
 }
