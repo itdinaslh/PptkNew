@@ -60,15 +60,18 @@ public class SubKegiatanApiController : ControllerBase
     }
 
     [HttpGet("/api/master/subkegiatan/search")]
-    public async Task<IActionResult> SearchSubKegiatan(string? term)
+    public async Task<IActionResult> SearchSubKegiatan(int kegiatanId, string? term)
     {
         var data = await repo.SubKegiatans
-            .Where(k => !String.IsNullOrEmpty(term) ?
-                k.NamaSubKegiatan.ToLower().Contains(term.ToLower()) ||
-                k.KodeSubKegiatan.ToLower().Contains(term.ToLower()) : true
-            ).Select(s => new {
+            .Where(k => k.KegiatanId == kegiatanId)
+            .Where(i => !String.IsNullOrEmpty(term) ?
+                i.NamaSubKegiatan.ToLower().Contains(term.ToLower()) ||
+                i.KodeSubKegiatan.ToLower().Contains(term.ToLower())
+                : true
+            ).Select(s => new
+            {
                 id = s.SubKegiatanId,
-                namaKegiatan = s.KodeSubKegiatan + " - " + s.NamaSubKegiatan
+                namaSubKegiatan = s.KodeSubKegiatan + " - " + s.NamaSubKegiatan
             }).Take(10).ToListAsync();
 
         return Ok(data);

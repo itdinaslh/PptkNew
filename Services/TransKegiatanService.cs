@@ -15,5 +15,7 @@ public class TransKegiatanService : ITransKegiatan {
         if (trans.TransKegiatanId == 0) {
             await context.AddAsync(trans);
         }
+
+        await context.SaveChangesAsync();
     }
 }

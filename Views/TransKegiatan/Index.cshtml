@@ -116,7 +116,7 @@
 </div>
 
 <!-- Table -->
-<div class="container-fluid">
+<div class="container-fluid" id="transTable">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -147,16 +147,16 @@
                                 @foreach(var p in Model.TransKegiatans!)
                                 {
                                     <tr>
-                                        <td>@p.Prog.KodeProgram</td>
-                                        <td>@p.Prog.NamaProgram</td>
-                                        <td>@p.SubKegiatan.Kegiatan.KodeKegiatan</td>
-                                        <td>@p.SubKegiatan.Kegiatan.NamaKegiatan</td>
-                                        <td>@p.SubKegiatan.KodeSubKegiatan</td>
-                                        <td>@p.SubKegiatan.NamaSubKegiatan</td>
-                                        <td>@p.KodePASK</td>
-                                        <td>@p.Penjabaran</td>
-                                        <td>@p.TransDetails.Where(t => t.TransKegiatanId == p.TransKegiatanId).Sum(e => e.Anggaran).ToString("#,###")</td>
-                                        <td>
+                                        <td class="align-middle">@p.Prog.KodeProgram</td>
+                                        <td class="align-middle">@p.Prog.NamaProgram</td>
+                                        <td class="align-middle">@p.SubKegiatan.Kegiatan.KodeKegiatan</td>
+                                        <td class="align-middle">@p.SubKegiatan.Kegiatan.NamaKegiatan</td>
+                                        <td class="align-middle">@p.SubKegiatan.KodeSubKegiatan</td>
+                                        <td class="align-middle">@p.SubKegiatan.NamaSubKegiatan</td>
+                                        <td class="align-middle">@p.KodePASK</td>
+                                        <td class="align-middle">@p.Penjabaran</td>
+                                        <td class="align-middle">@p.TransDetails.Where(t => t.TransKegiatanId == p.TransKegiatanId).Sum(e => e.Anggaran).ToString("#,###")</td>
+                                        <td class="align-middle">
                                             <a asp-controller="TransKegiatan" asp-action="Detail" asp-route-trans="@p.TransKegiatanId" class="btn btn-success" style="width: 100%;">Detail</a>
                                         </td>
                                     </tr>

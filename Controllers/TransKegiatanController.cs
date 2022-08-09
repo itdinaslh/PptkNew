@@ -40,6 +40,18 @@ public class TransKegiatanController : Controller
         return PartialView();
     }
 
+    [HttpPost("/transaksi/master/store")]
+    public async Task<IActionResult> CreateMasterTrans(TransKegiatan trans)
+    {
+        if (ModelState.IsValid)
+        {
+            await repo.SaveDataAsync(trans);
+            return Json(Result.Success());
+        }
+
+        return PartialView(trans);
+    }
+
     [HttpGet("/transaksi/detail")]
     public async Task<IActionResult> Detail(long? trans) {
         TransKegiatan? thisTrans = await repo.TransKegiatans

@@ -8,10 +8,12 @@ public class TransKegiatan {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long TransKegiatanId { get; set; }
 
-    public int SkpdId { get; set; }
+    public int SkpdId { get; set; } = 1;
 
-    public int ProgId { get; set; }    
+    [Required(ErrorMessage = "Kode Program wajib diisi!")]
+    public int ProgId { get; set; }
 
+    [Required(ErrorMessage = "Sub Kegiatan wajib diisi!")]
     public int SubKegiatanId { get; set; }
 
     #nullable disable

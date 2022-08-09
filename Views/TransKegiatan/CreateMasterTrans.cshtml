@@ -1,4 +1,6 @@
-﻿<form action="/transaksi/master/store" method="post">
+﻿@model TransKegiatan
+
+<form action="/transaksi/master/store" method="post">
     <div class="modal-header">
         <h4 class="modal-title">Tambah Transaksi</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -6,23 +8,23 @@
     <div class="modal-body">
         <div class="form-group">
             <label>Program</label>
-            <select class="form-control" id="sProgram"></select>
+            <select class="form-control" id="sProgram" asp-for="ProgId" required></select>
         </div>
         <div class="form-group">
             <label>Kegiatan</label>
-            <select class="form-control" id="sKegiatan"></select>
+            <select class="form-control" id="sKegiatan" required></select>
         </div>
         <div class="form-group">
             <label>Sub Kegiatan</label>
-            <select class="form-control" id="sSubKegiatan"></select>
+            <select class="form-control" id="sSubKegiatan" asp-for="SubKegiatanId" disabled required></select>
         </div>
         <div class="form-group">
             <label>Kode PASK</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" asp-for="KodePASK" required />
         </div>
         <div class="form-group">
             <label>Penjabaran Atas Sub Kegiatan</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" rows="3" asp-for="Penjabaran" required></textarea>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

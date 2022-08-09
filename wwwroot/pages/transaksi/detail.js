@@ -20,14 +20,13 @@ function loadTable() {
         searching: false,
         info: false,
         responsive: true,
-        stateSave: true,
-        lengthMenu: [5, 10, 20],
+        stateSave: true,        
         ajax: {
             url: '/api/transaksi/detail/list?trans=' + trans,
             method: 'POST'
         },
         columns: [            
-            { data: 'kodeRekening', name: 'kodeRekening' },
+            { data: 'kodeRekening', name: 'kodeRekening', orderable: false },
             { data: 'namaRekening', name: 'namaRekening' },
             { data: 'anggaran', name: 'anggaran' },
             {
@@ -106,4 +105,21 @@ $(document).on('shown.bs.modal', function () {
             cache: true
         }
     });
+
+    $('#txtAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
+});
+
+$(document).on('keyup', '#txtAnggaran', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rAnggaran').val(jumlah);
+});
+
+$(document).on('click', '#btnTambah', function () {
+    $('#frmTambah').show();
+    $('#tblTrans').hide();
+});
+
+$(document).on('click', '#btnCancel', function () {
+    $('#frmTambah').hide();
+    $('#tblTrans').show();
 });
