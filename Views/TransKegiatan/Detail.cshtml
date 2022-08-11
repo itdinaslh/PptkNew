@@ -46,7 +46,7 @@
 </div>
 
 <!-- Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom:30px;">
     <div class="row">
         <div col-sm-12>
             <div class="card">
@@ -113,44 +113,42 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- Form -->
-<div class="container-fluid" id="frmTambah" style="display:none;">
-    <div class="row">
+    <!-- Form Tambah Rekening -->
+    <div class="row" id="frmTambah" style="display:none">
         <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>No Rekening</label>
-                                <select class="form-control"></select>
+            <form method="post" action="/transaksi/detail/store" id="frmRekening">
+                <input type="hidden" asp-for="TransDetails!.TransDetailId" id="trxId" />
+                <input type="hidden" asp-for="TransDetails!.TransKegiatanId" value="@Model.TransKegiatan!.TransKegiatanId" />
+                <input type="hidden" asp-for="TransDetails!.Anggaran" id="rAnggaran" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>No Rekening</label>
+                                    <select class="form-control" asp-for="TransDetails!.RekeningId" id="sRekening" required></select>
+                                </div>
                             </div>
-                    
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Anggaran</label>
-                                <input type="text" class="form-control" />
-                            </div>                  
-                        </div>
-                        <div class="col-sm-12 text-end">
-                            <button type="button" id="btnCancel" class="btn btn-danger m-r-3">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Anggaran</label>
+                                    <input type="text" class="form-control" id="txtAnggaran" required autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <button type="button" id="btnCancel" class="btn btn-danger m-r-3">Batal</button>
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-            </div>
+            </form>            
         </div>
     </div>
-        
-</div>
 
-<!-- Table -->
-<div class="container-fluid" id="tblTrans">
-    <div class="row">
+    <!-- Table -->
+    <div class="row" id="tblTrans">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
@@ -162,26 +160,26 @@
                             Total : <span id="TotalTrans" style="margin-left:20px;">0</span>
                         </div>
                     </div>
-                    
+
                     <input type="hidden" id="TransID" value="@Model.TransKegiatan!.TransKegiatanId" />
                     <table id="tblData" class="table table-bordered table-striped table-responsive">
                         <thead>
-                            <tr>                                
+                            <tr>
                                 <th>No Rekening</th>
                                 <th>Rekening</th>
                                 <th>Anggaran</th>
                                 <th>Aksi</th>
                             </tr>
-                        </thead>                        
+                        </thead>
                     </table>
                     <div class="text-center mt-3">
                         <a href="/transaksi/index" class="btn btn-danger">Kembali</a>
                     </div>
                 </div>
             </div>
-            
+
         </div>
-    </div>    
+    </div>
 </div>
 
 @section pluginjs {

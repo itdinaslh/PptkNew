@@ -1,6 +1,10 @@
 ﻿$(document).ready(function () {
     loadTable();
     ComputeTotal();
+
+    $('#txtAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
+
+    LoadNoRekening();
 });
 
 function loadContent() {
@@ -115,11 +119,69 @@ $(document).on('keyup', '#txtAnggaran', function () {
 });
 
 $(document).on('click', '#btnTambah', function () {
-    $('#frmTambah').show();
-    $('#tblTrans').hide();
+    ShowFrmTambah();
 });
 
 $(document).on('click', '#btnCancel', function () {
+    HideFrmTambah();
+});
+
+function ShowFrmTambah() {
+    $('#frmTambah').show();
+    $('#tblTrans').hide();
+    $('#sRekening').val("").trigger('change');
+    $('#txtAnggaran').val("");
+}
+
+function HideFrmTambah() {
     $('#frmTambah').hide();
     $('#tblTrans').show();
+    $('#sRekening').val("").trigger('change');
+    $('#txtAnggaran').val("");
+}
+
+$('#frmRekening').submit(function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: this.action,
+        type: this.method,
+        data: $(this).serialize(),
+        success: function (result) {
+            if (result.success) {                
+                showSuccessMessage();
+                HideFrmTambah();
+            } else {
+                showInvalidMessage();
+            }
+        }
+    });
 });
+
+function LoadNoRekening() {
+    $('#sRekening').select2({
+        placeholder: 'Pilih Rekening...',        
+        allowClear: true,
+        ajax: {
+            url: "/api/master/rekening/search",
+            contentType: "application/json; charset=utf-8",
+            data: function (params) {
+                var query = {
+                    term: params.term,
+                };
+                return query;
+            },
+            processResults: function (result) {
+                return {
+                    results: $.map(result, function (item) {
+                        return {
+                            text: item.namaRekening,
+                            id: item.id
+                        }
+                    })
+                }
+            },
+            cache: true
+        }
+    });
+}

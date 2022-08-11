@@ -31,7 +31,10 @@ public class TransKegiatanController : Controller
             .Include(k => k.SubKegiatan.Kegiatan)
             .Include(p => p.Prog)
             .Include(d => d.TransDetails);
-        return View(new IndexVM { TransKegiatans = transKegiatans});
+
+        return View(new IndexVM { 
+            TransKegiatans = transKegiatans
+        });
     }
 
     [HttpGet("/transaksi/master/create")]
@@ -59,7 +62,7 @@ public class TransKegiatanController : Controller
             .Include(sub => sub.SubKegiatan)
             .Include(k => k.SubKegiatan.Kegiatan)
             .Include(t => t.TransDetails)
-            .FirstOrDefaultAsync(t => t.TransKegiatanId == trans);
+            .FirstOrDefaultAsync(t => t.TransKegiatanId == trans);        
 
         if (thisTrans is null)
         {
@@ -69,7 +72,10 @@ public class TransKegiatanController : Controller
         return View(new DetailVM
         {
             TransKegiatan = thisTrans,
-            TransDetails = details.TransDetails.Where(t => t.TransKegiatanId == trans)
+            TransDetails = new TransDetails
+            {
+                TransDetailId = Guid.NewGuid()
+            }
         });
     }
 
@@ -87,16 +93,18 @@ public class TransKegiatanController : Controller
     }
 
     [HttpPost("/transaksi/detail/store")]
-    public async Task<IActionResult> StoreDetails(CreateDetailVM model) 
+    public async Task<IActionResult> StoreDetails(DetailVM model) 
     {
         if (ModelState.IsValid)
         {
-            await details.SaveDataAsync(model.TransDetail);
+            model.TransDetails!.TransDetailId = Guid.NewGuid();
+
+            await details.SaveDataAsync(model.TransDetails!);
 
             return Json(Result.Success());
         }
 
-        return PartialView(model);
+        return Json(Result.Failed());
     }
 
     [HttpPost("/transaksi/detail/delete")]

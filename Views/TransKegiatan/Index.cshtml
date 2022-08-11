@@ -52,7 +52,7 @@
                     <div class="media static-top-widget">
                         <div class="align-self-center text-center"><i data-feather="database"></i></div>
                         <div class="media-body"><span class="m-0">Total Kegiatan</span>
-                            <h4 class="mb-0 counter">55</h4><i class="icon-bg" data-feather="database"></i>
+                            <h4 class="mb-0 counter">@Model.TransKegiatans!.Count()</h4><i class="icon-bg" data-feather="database"></i>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="media static-top-widget">
                         <div class="align-self-center text-center"><i data-feather="book"></i></div>
                         <div class="media-body"><span class="m-0">Total Kontrak</span>
-                            <h4 class="mb-0 counter">135</h4><i class="icon-bg" data-feather="book"></i>
+                            <h4 class="mb-0 counter">15</h4><i class="icon-bg" data-feather="book"></i>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                 <div class="bg-danger b-r-4 card-body">
                     <div class="media static-top-widget">
                         <div class="align-self-center text-center"><i data-feather="book-open"></i></div>
-                        <div class="media-body"><span class="m-0">Total</span>
-                            <h4 class="mb-0 counter">150</h4><i class="icon-bg" data-feather="book-open"></i>
+                        <div class="media-body"><span class="m-0">Total Sub Kegiatan</span>
+                            <h4 class="mb-0 counter">@Model.TotalSub().ToString()</h4><i class="icon-bg" data-feather="book-open"></i>
                         </div>
                     </div>
                 </div>
@@ -85,10 +85,9 @@
         <div class="col-sm-6 col-xl-3 col-lg-6">
             <div class="card o-hidden border-0">
                 <div class="bg-info b-r-4 card-body">
-                    <div class="media static-top-widget">
-                        <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
-                        <div class="media-body"><span class="m-0">Total Budget</span>
-                            <h4 class="mb-0 counter">15,3M</h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                    <div class="media static-top-widget">                        
+                        <div class="media-body" style="padding-left:0;"><span class="m-0">Total Budget</span>
+                            <h4 class="mb-0 counter">@Model.SumAnggaran().ToString("#,###")</h4><i class="icon-bg" data-feather="dollar-sign"></i>
                         </div>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
 </div>
 
 <!-- Table -->
-<div class="container-fluid" id="transTable">
+<div class="container-fluid" id="transTable" style="margin-bottom: 50px;">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -155,7 +154,7 @@
                                         <td class="align-middle">@p.SubKegiatan.NamaSubKegiatan</td>
                                         <td class="align-middle">@p.KodePASK</td>
                                         <td class="align-middle">@p.Penjabaran</td>
-                                        <td class="align-middle">@p.TransDetails.Where(t => t.TransKegiatanId == p.TransKegiatanId).Sum(e => e.Anggaran).ToString("#,###")</td>
+                                        <td class="align-middle text-end">@p.TransDetails.Where(t => t.TransKegiatanId == p.TransKegiatanId).Sum(e => e.Anggaran).ToString("#,###")</td>
                                         <td class="align-middle">
                                             <a asp-controller="TransKegiatan" asp-action="Detail" asp-route-trans="@p.TransKegiatanId" class="btn btn-success" style="width: 100%;">Detail</a>
                                         </td>
