@@ -24,7 +24,7 @@ function loadTable() {
             { data: 'namaRekening', name: 'namaRekening' },
             {
                 "render": function (data, type, row) {
-                    return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/rekening/edit/?id="
+                    return "<button class='btn btn-sm btn-success mr-2 showMe' style='width:100%;' data-href='/master/rekening/edit/?id="
                         + row.rekeningId + "'><i class='fa fa-edit'></i> Edit</button>";
                 }
             }

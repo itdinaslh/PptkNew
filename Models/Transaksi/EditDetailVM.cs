@@ -2,7 +2,7 @@
 
 namespace PptkNew.Models.Transaksi;
 
-public class CreateDetailVM
+public class EditDetailVM
 {
 #nullable disable
     public TransDetails TransDetail { get; set; }

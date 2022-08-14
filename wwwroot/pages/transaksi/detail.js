@@ -35,7 +35,7 @@ function loadTable() {
             { data: 'anggaran', name: 'anggaran' },
             {
                 "render": function (data, type, row) {
-                    return "<button class='btn btn-sm btn-success showMe' style='margin-right:5px;' data-href='/master/transaksi/edit/?id="
+                    return "<button class='btn btn-sm btn-success showMe' style='margin-right:5px;' data-href='/transaksi/detail/edit/?id="
                         + row.transDetailId + "'><i class='fa fa-edit'></i></button><button class='btn btn-sm btn-danger delBtn' data-id='"
                         + row.transDetailId + "'><i class='fa fa-trash'></i></button > ";
                 }
@@ -83,39 +83,21 @@ $(document).on('click', '.delBtn', function () {
 });
 
 $(document).on('shown.bs.modal', function () {
-    $('#sRekening').select2({
-        placeholder: 'Pilih Rekening...',
-        dropdownParent: $('#myModal'),
-        allowClear: true,
-        ajax: {
-            url: "/api/master/rekening/search",
-            contentType: "application/json; charset=utf-8",
-            data: function (params) {
-                var query = {
-                    term: params.term,
-                };
-                return query;
-            },
-            processResults: function (result) {
-                return {
-                    results: $.map(result, function (item) {
-                        return {
-                            text: item.namaRekening,
-                            id: item.id
-                        }
-                    })
-                }
-            },
-            cache: true
-        }
-    });
+    LoadModalRekening();
 
-    $('#txtAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
+    var anggaran = $('#rModalAnggaran').val();
+    $('#txtModalAnggaran').val(anggaran);
+    $('#txtModalAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
 });
 
 $(document).on('keyup', '#txtAnggaran', function () {
     var jumlah = $(this).autoNumeric('get');
     $('#rAnggaran').val(jumlah);
+});
+
+$(document).on('keyup', '#txtModalAnggaran', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rModalAnggaran').val(jumlah);
 });
 
 $(document).on('click', '#btnTambah', function () {
@@ -148,8 +130,8 @@ $('#frmRekening').submit(function (e) {
         type: this.method,
         data: $(this).serialize(),
         success: function (result) {
-            if (result.success) {                
-                showSuccessMessage();
+            if (result.success) {
+                RekSuccessAdded();
                 HideFrmTambah();
             } else {
                 showInvalidMessage();
@@ -183,5 +165,48 @@ function LoadNoRekening() {
             },
             cache: true
         }
+    }).on('select2:open', () => {
+        $(".select2-results:not(:has(a))").append('<a href="javascript:void(0)" class="showMe" data-href="/master/rekening/create" style="padding: 6px;height: 20px;display: inline-table;">Tambah baru</a>');
+    });
+}
+
+function LoadModalRekening() {
+    $('#sModalRekening').select2({
+        placeholder: 'Pilih Rekening...',
+        allowClear: true,
+        ajax: {
+            url: "/api/master/rekening/search",
+            contentType: "application/json; charset=utf-8",
+            data: function (params) {
+                var query = {
+                    term: params.term,
+                };
+                return query;
+            },
+            processResults: function (result) {
+                return {
+                    results: $.map(result, function (item) {
+                        return {
+                            text: item.namaRekening,
+                            id: item.id
+                        }
+                    })
+                }
+            },
+            cache: true
+        }
+    });
+}
+
+function RekSuccessAdded() {
+    Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Data berhasil disimpan!',
+        showConfirmButton: false,
+        timer: 1000
+    }).then(function () {
+        loadTable();
+        ComputeTotal();
     });
 }

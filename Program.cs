@@ -30,6 +30,7 @@ services.AddDbContext<AppDbContext>(options => {
     services.AddScoped<IJenisPengadaan, JenisPengadaanService>();
     services.AddScoped<IRekening, RekeningService>();
     services.AddScoped<IUserSkpd, UserSkpdService>();
+    services.AddScoped<IPenyedia, PenyediaService>();
     services.AddScoped<ITransKegiatan, TransKegiatanService>();
     services.AddScoped<ITransDetails, TransDetailService>();
 }

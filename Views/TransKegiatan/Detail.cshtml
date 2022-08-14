@@ -46,7 +46,8 @@
 </div>
 
 <!-- Page Content -->
-<div class="container-fluid" style="margin-bottom:30px;">
+<div class="container-fluid" style="margin-bottom:30px;">    
+    <!-- Trans Detail -->
     <div class="row">
         <div col-sm-12>
             <div class="card">
@@ -124,13 +125,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-8">                                                              
                                 <div class="form-group">
                                     <label>No Rekening</label>
                                     <select class="form-control" asp-for="TransDetails!.RekeningId" id="sRekening" required></select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>Anggaran</label>
                                     <input type="text" class="form-control" id="txtAnggaran" required autocomplete="off" />
@@ -171,15 +172,82 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                    </table>                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Form Tambah Kontrak -->
+    <div class="row" id="frmAddKontrak">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-center">Tambah Kontrak</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>No. Kontrak</label>
+                                <input type="text" class="form-control" placeholder="Isi no. kontrak..." />
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Mulai</label>
+                                <input type="text" class="form-control" placeholder="Isi tanggal mulai..." />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Penyedia</label>
+                                <select class="form-control" id="sPenyedia"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal Berakhir</label>
+                                <input type="text" class="form-control" placeholder="Isi tanggal berakhir..." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Kontrak -->
+    <div class="row" id="cardKontrak">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header p-b-0">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Data Kontrak</h5>
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <button type="button" class="btn btn-primary">+Kontrak</button>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="card-body">
+                    <table id="tblKontrak" class="table table-bordered table-striped table-responsive">
+                        <thead>
+                            <tr>
+                                <th>No Kontrak</th>
+                                <th>Penyedia</th>
+                                <th>Tgl Mulai</th>
+                                <th>Tgl Berakhir</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
                     </table>
                     <div class="text-center mt-3">
                         <a href="/transaksi/index" class="btn btn-danger">Kembali</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+
 </div>
 
 @section pluginjs {

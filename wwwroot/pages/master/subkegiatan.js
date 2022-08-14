@@ -25,7 +25,7 @@ function loadTable() {
             { data: 'namaKegiatan', name: 'namaKegiatan'},
             {
                 "render": function (data, type, row) {
-                    return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/subkegiatan/edit/?id="
+                    return "<button class='btn btn-sm btn-success mr-2 showMe' style='width:100%;' data-href='/master/subkegiatan/edit/?id="
                         + row.subKegiatanId + "'><i class='fa fa-edit'></i> Edit</button>";
                 }
             }

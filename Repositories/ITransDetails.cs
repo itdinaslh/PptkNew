@@ -8,5 +8,7 @@ public interface ITransDetails
 
     Task SaveDataAsync(TransDetails transDetails);
 
+    Task UpdateDataAsync(TransDetails details);
+
     Task DeleteDataAsync(Guid? id);
 }

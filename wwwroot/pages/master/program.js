@@ -24,7 +24,7 @@ function loadTable() {
             { data: 'namaProgram', name: 'namaProgram', autowidth: true },
             {
                 "render": function (data, type, row) {
-                    return "<button class='btn btn-sm btn-outline-success mr-2 showMe' style='width:100%;' data-href='/master/program/edit/?id="
+                    return "<button class='btn btn-sm btn-success mr-2 showMe' style='width:100%;' data-href='/master/program/edit/?id="
                         + row.programId + "'><i class='fa fa-edit'></i> Edit</button>";
                 }
             }

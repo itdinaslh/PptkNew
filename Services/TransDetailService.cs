@@ -33,4 +33,20 @@ public class TransDetailService : ITransDetails
 
         await context.SaveChangesAsync();
     }
+
+    public async Task UpdateDataAsync(TransDetails detail)
+    {
+        TransDetails? data = await context.TransDetails.FindAsync(detail.TransDetailId);
+
+        if (data is not null)
+        {
+            data.RekeningId = detail.RekeningId;
+            data.Anggaran = detail.Anggaran;
+            data.UpdatedAt = DateTime.Now;
+
+            context.Update(data);
+
+            await context.SaveChangesAsync();
+        }
+    }
 }

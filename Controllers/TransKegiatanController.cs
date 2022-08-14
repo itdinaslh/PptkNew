@@ -79,17 +79,37 @@ public class TransKegiatanController : Controller
         });
     }
 
-    [HttpGet("/transaksi/detail/create")]
-    public IActionResult CreateDetail(long id)
+    [HttpGet("/transaksi/detail/edit")]
+    public async Task<IActionResult> EditDetail(Guid id)
     {
-        return PartialView(new CreateDetailVM
+        TransDetails? data = await details.TransDetails
+            .Include(r => r.Rekening)
+            .FirstOrDefaultAsync(t => t.TransDetailId == id);
+
+        if (data is not null)
         {
-            TransDetail = new TransDetails
+            return PartialView(new EditDetailVM
             {
-                TransKegiatanId = id
-            },
-            TransKegiatanId = id
-        });
+                TransDetail = data,
+                TransKegiatanId = data.TransKegiatanId,
+                NamaRekening = data.Rekening.KodeRekening + " - " + data.Rekening.NamaRekening
+            });
+        }
+
+        return NotFound();
+    }
+
+    [HttpPost("/transaksi/detail/edit")]
+    public async Task<IActionResult> EditDetail(EditDetailVM model)
+    {
+        if (ModelState.IsValid)
+        {
+            await details.UpdateDataAsync(model.TransDetail);
+
+            return Json(Result.Success());
+        }
+
+        return PartialView(model);
     }
 
     [HttpPost("/transaksi/detail/store")]
