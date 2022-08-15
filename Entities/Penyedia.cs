@@ -19,6 +19,7 @@ public class Penyedia
 
     public string? Alamat { get; set; }
 
+    [MaxLength(50)]
     public string? NPWP { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

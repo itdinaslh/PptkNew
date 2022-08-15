@@ -5,6 +5,7 @@
     $('#txtAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
 
     LoadNoRekening();
+    LoadPenyedia();
 });
 
 function loadContent() {
@@ -108,6 +109,14 @@ $(document).on('click', '#btnCancel', function () {
     HideFrmTambah();
 });
 
+$(document).on('click', '#btnAddKontrak', function () {
+    ShowFrmKontrak();
+});
+
+$(document).on('click', '#btnCancelKontrak', function () {
+    HideFrmKontrak();
+});
+
 function ShowFrmTambah() {
     $('#frmTambah').show();
     $('#tblTrans').hide();
@@ -120,6 +129,18 @@ function HideFrmTambah() {
     $('#tblTrans').show();
     $('#sRekening').val("").trigger('change');
     $('#txtAnggaran').val("");
+}
+
+function ShowFrmKontrak() {
+    $('#frmAddKontrak').show();
+    $('#cardKontrak').hide();
+    $('#sPenyedia').val("").trigger('change');    
+}
+
+function HideFrmKontrak() {
+    $('#frmAddKontrak').hide();
+    $('#cardKontrak').show();
+    $('#sPenyedia').val("").trigger('change');
 }
 
 $('#frmRekening').submit(function (e) {
@@ -188,6 +209,34 @@ function LoadModalRekening() {
                     results: $.map(result, function (item) {
                         return {
                             text: item.namaRekening,
+                            id: item.id
+                        }
+                    })
+                }
+            },
+            cache: true
+        }
+    });
+}
+
+function LoadPenyedia() {
+    $('#sPenyedia').select2({
+        placeholder: 'Pilih Penyedia...',
+        allowClear: true,
+        ajax: {
+            url: "/api/master/penyedia/search",
+            contentType: "application/json; charset=utf-8",
+            data: function (params) {
+                var query = {
+                    term: params.term,
+                };
+                return query;
+            },
+            processResults: function (result) {
+                return {
+                    results: $.map(result, function (item) {
+                        return {
+                            text: item.namaPenyedia,
                             id: item.id
                         }
                     })

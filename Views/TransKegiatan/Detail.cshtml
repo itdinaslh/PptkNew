@@ -180,7 +180,7 @@
     </div>
 
     <!-- Form Tambah Kontrak -->
-    <div class="row" id="frmAddKontrak">
+    <div class="row" id="frmAddKontrak" style="display:none;">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
@@ -208,6 +208,10 @@
                                 <input type="text" class="form-control" placeholder="Isi tanggal berakhir..." />
                             </div>
                         </div>
+                        <div class="col-sm-12 text-end">
+                            <button type="button" id="btnCancelKontrak" class="btn btn-danger m-r-3">Batal</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,7 +228,7 @@
                             <h5>Data Kontrak</h5>
                         </div>
                         <div class="col-sm-6 text-end">
-                            <button type="button" class="btn btn-primary">+Kontrak</button>
+                            <button type="button" id="btnAddKontrak" class="btn btn-primary">+Kontrak</button>
                         </div>
                     </div>                    
                 </div>

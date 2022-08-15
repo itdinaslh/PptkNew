@@ -51,4 +51,18 @@ public class PenyediaApiController : ControllerBase
 
         return Ok(jsonData);
     }
+
+    [HttpGet("/api/master/penyedia/search")]
+    public async Task<IActionResult> SearchProgram(string? term)
+    {
+        var data = await repo.Penyedias
+            .Where(k => !String.IsNullOrEmpty(term) ?
+                k.NamaPenyedia.ToLower().Contains(term.ToLower()) : true
+            ).Select(s => new {
+                id = s.PenyediaId,
+                namaPenyedia = s.NamaPenyedia
+            }).Take(10).ToListAsync();
+
+        return Ok(data);
+    }
 }

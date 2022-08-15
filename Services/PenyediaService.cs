@@ -30,8 +30,12 @@ public class PenyediaService : IPenyedia
                 data.NamaPenyedia = model.Penyedia.NamaPenyedia;
                 data.NPWP = model.Penyedia.NPWP;
                 data.Alamat = model.Penyedia.Alamat;
-                data.
+                data.UpdatedAt = DateTime.Now;
+
+                context.Update(data);
             }
         }
+
+        await context.SaveChangesAsync();
     }
 }
