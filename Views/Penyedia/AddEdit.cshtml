@@ -1,0 +1,33 @@
+﻿@model PptkNew.Models.Master.PenyediaVM
+
+<form action="/master/penyedia/store" method="post">
+    <div class="modal-header">
+        @if (!Model.IsNew) {
+            <h5 class="model-title">Edit Master Penyedia</h5>
+        }
+        else {
+            <h5 class="modal-title">Tambah Master Penyedia</h5>
+        } 
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" asp-for="Penyedia.PenyediaId">         
+        <div class="form-group">
+            <label>Nama Penyedia <span class="text-danger">*</span></label>
+            <input type="text" asp-for="Penyedia.NamaPenyedia" class="form-control" autofocus autocomplete="off" />
+            <span asp-validation-for="Penyedia.NamaPenyedia" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Alamat</label>
+            <textarea asp-for="Penyedia.Alamat" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>NPWP</label>
+            <input type="text" asp-for="Penyedia.NPWP" class="form-control" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

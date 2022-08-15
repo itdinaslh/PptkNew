@@ -47,6 +47,9 @@
             <li class="dropdown">
                 <a class='nav-link menu-title link-nav' asp-controller="JenisPengadaan" asp-action="Index"><i data-feather="list"></i><span>Jenis Pengadaan</span></a>
             </li>
+            <li class="dropdown">
+                <a class='nav-link menu-title link-nav' asp-controller="Penyedia" asp-action="Index"><i data-feather="server"></i><span>Penyedia</span></a>
+            </li>
             @if (User.IsInRole("SysAdmin")) {
                 <li class="sidebar-main-title">
                     <div>

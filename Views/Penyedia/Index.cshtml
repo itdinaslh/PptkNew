@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "_Layout";
     ViewBag.Parent = "Master";
-    ViewBag.Title = "Master Data Kegiatan";
+    ViewBag.Title = "Master Data Penyedia";
 }
 
 @section plugincss {
@@ -9,4 +9,71 @@
     <link rel="stylesheet" href="~/lib/sweetalert/sweetalert2.min.css" />
 }
 
+<!--Modal Window-->
+<div id='myModal' class='modal fade in' role="dialog" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
 
+<!-- Page Header -->
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Master Data Penyedia</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Master Data</li>
+                    <li class="breadcrumb-item">Penyedia</li>
+                </ol>
+            </div>
+            <div class="col-sm-6">
+                <div class="bookmark">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" class="showMe" data-href="/master/penyedia/create" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Add">
+                                <i data-feather="plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="">                        
+                        <table id="tblData" class="display datatables">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama Penyedia</th>
+                                    <th>Alamat</th>                                    
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+
+@section pluginjs {
+    <script src="~/admin/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>   
+    <script src="~/lib/sweetalert/sweetalert2.all.min.js"></script> 
+}
+
+@section scripts {
+    <script src="~/js/modalForm.js"></script>
+    <script src="~/pages/master/penyedia.js"></script>
+}
