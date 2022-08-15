@@ -2,7 +2,7 @@
     loadTable();
     ComputeTotal();
 
-    $('#txtAnggaran').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
+    $('.autonumber').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
 
     LoadNoRekening();
     LoadPenyedia();
@@ -187,9 +187,13 @@ function LoadNoRekening() {
             cache: true
         }
     }).on('select2:open', () => {
-        $(".select2-results:not(:has(a))").append('<a href="javascript:void(0)" class="showMe" data-href="/master/rekening/create" style="padding: 6px;height: 20px;display: inline-table;">Tambah baru</a>');
+        $(".select2-results:not(:has(a))").append('<a href="javascript:void(0)" id="addRekening" class="showMe closeDown" data-href="/master/rekening/create" style="padding: 6px;height: 20px;display: inline-table;">Tambah baru</a>');
     });
 }
+
+$(document).on('click', '.closeDown', function() {
+    $(document.body).trigger('mousedown');
+});
 
 function LoadModalRekening() {
     $('#sModalRekening').select2({
