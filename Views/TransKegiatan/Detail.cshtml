@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="~/admin/assets/css/datatables.css" />
     <link rel="stylesheet" href="~/lib/sweetalert/sweetalert2.min.css" />
     <link rel="stylesheet" href="~/admin/assets/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/date-picker.css">
 }
 
 <!--Modal Window-->
@@ -223,11 +224,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Mulai</label>
-                                <input type="text" class="form-control" placeholder="Isi tanggal mulai..." />
+                                <input type="text" class="form-control dtpicker" placeholder="Isi tanggal mulai..." />
                             </div>                            
                             <div class="form-group">
                                 <label>Tanggal Berakhir</label>
-                                <input type="text" class="form-control" placeholder="Isi tanggal berakhir..." />
+                                <input type="text" class="form-control dtpicker" placeholder="Isi tanggal berakhir..." />
                             </div>
                         </div>
                         <div class="col-sm-12 text-end mt-3">
@@ -280,10 +281,13 @@
     <script src="~/admin/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>   
     <script src="~/lib/sweetalert/sweetalert2.all.min.js"></script> 
     <script src="~/admin/assets/js/select2/select2.full.min.js"></script>
-    <script src="~/lib//autonumeric//autoNumeric.min.js"></script>
+    <script src="~/admin/assets/js/datepicker/date-picker/datepicker.js"></script>
+    <script src="~/admin/assets/js/datepicker/date-picker/datepicker.id.js"></script>
+    <script src="~/lib//autonumeric/autoNumeric.min.js"></script>
 }
 
 @section scripts {
     <script src="~/js/modalForm.js"></script>
     <script src="~/pages/transaksi/detail.js"></script>
+    <script src="~/pages/transaksi/kontrak.js"></script>
 }
