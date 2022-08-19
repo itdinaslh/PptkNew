@@ -127,6 +127,21 @@ public class TransKegiatanController : Controller
         return Json(Result.Failed());
     }
 
+    [HttpPost("/transaksi/detail/kontrak/store")]
+    public async Task<IActionResult> StoreKontrak(DetailVM model)
+    {
+        model.Kontrak!.KontrakId = Guid.NewGuid();
+
+        if (ModelState.IsValid)
+        {
+            await details.SaveKontrakAsync(model.Kontrak);
+
+            return Json(Result.Success());
+        }
+
+        return Json(Result.Failed());
+    }
+
     [HttpPost("/transaksi/detail/delete")]
     public async Task<IActionResult> DeleteDetails(Guid? id)
     {

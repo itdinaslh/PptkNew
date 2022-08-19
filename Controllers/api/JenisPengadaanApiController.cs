@@ -52,4 +52,18 @@ public class JenisPengadaanApiController : ControllerBase
 
         return Ok(jsonData);
     }
+
+    [HttpGet("/api/master/jenis-pengadaan/search")]
+    public async Task<IActionResult> SearchProgram(string? term)
+    {
+        var data = await repo.JenisPengadaans
+            .Where(k => !String.IsNullOrEmpty(term) ?
+                k.NamaJenis.ToLower().Contains(term.ToLower()) : true
+            ).Select(s => new {
+                id = s.JenisPengadaanId,
+                namaJenis = s.NamaJenis
+            }).Take(10).ToListAsync();
+
+        return Ok(data);
+    }
 }

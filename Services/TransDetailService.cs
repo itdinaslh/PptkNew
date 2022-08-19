@@ -15,6 +15,8 @@ public class TransDetailService : ITransDetails
 
     public IQueryable<TransDetails> TransDetails => context.TransDetails;
 
+    public IQueryable<Kontrak> Kontraks => context.Kontraks;
+
     public async Task DeleteDataAsync(Guid? id)
     {
         TransDetails? data = await context.TransDetails.FindAsync(id);
@@ -49,4 +51,11 @@ public class TransDetailService : ITransDetails
             await context.SaveChangesAsync();
         }
     }
-}
+
+    public async Task SaveKontrakAsync(Kontrak kontrak)
+    {
+        await context.AddAsync(kontrak);
+
+        await context.SaveChangesAsync();
+    }
+ }

@@ -6,6 +6,7 @@
 
     LoadNoRekening();
     LoadPenyedia();
+    LoadJenisPengadaan();
 });
 
 function loadContent() {
@@ -96,6 +97,26 @@ $(document).on('keyup', '#txtAnggaran', function () {
     $('#rAnggaran').val(jumlah);
 });
 
+$(document).on('keyup', '#txtNilaiKontrak', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rNilaiKontrak').val(jumlah);
+});
+
+$(document).on('keyup', '#txtNilaiKAK', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rNilaiKAK').val(jumlah);
+});
+
+$(document).on('keyup', '#txtNilaiRAB', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rNilaiRAB').val(jumlah);
+});
+
+$(document).on('keyup', '#txtNilaiHPS', function () {
+    var jumlah = $(this).autoNumeric('get');
+    $('#rNilaiHPS').val(jumlah);
+});
+
 $(document).on('keyup', '#txtModalAnggaran', function () {
     var jumlah = $(this).autoNumeric('get');
     $('#rModalAnggaran').val(jumlah);
@@ -134,13 +155,15 @@ function HideFrmTambah() {
 function ShowFrmKontrak() {
     $('#frmAddKontrak').show();
     $('#cardKontrak').hide();
-    $('#sPenyedia').val("").trigger('change');    
+    $('#sPenyedia').val("").trigger('change');
+    $('.inputKontrak').val("");
 }
 
 function HideFrmKontrak() {
     $('#frmAddKontrak').hide();
     $('#cardKontrak').show();
     $('#sPenyedia').val("").trigger('change');
+    $('.inputKontrak').val("");
 }
 
 $('#frmRekening').submit(function (e) {
@@ -154,6 +177,23 @@ $('#frmRekening').submit(function (e) {
             if (result.success) {
                 RekSuccessAdded();
                 HideFrmTambah();
+            } else {
+                showInvalidMessage();
+            }
+        }
+    });
+});
+
+$('#frmKontrak').submit(function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: this.action,
+        type: this.method,
+        data: $(this).serialize(),
+        success: function (result) {
+            if (result.success) {                
+                HideFrmKontrak();
             } else {
                 showInvalidMessage();
             }
@@ -241,6 +281,34 @@ function LoadPenyedia() {
                     results: $.map(result, function (item) {
                         return {
                             text: item.namaPenyedia,
+                            id: item.id
+                        }
+                    })
+                }
+            },
+            cache: true
+        }
+    });
+}
+
+function LoadJenisPengadaan() {
+    $('#sJenisPengadaan').select2({
+        placeholder: 'Pilih Jenis Pengadaan...',
+        allowClear: true,
+        ajax: {
+            url: "/api/master/jenis-pengadaan/search",
+            contentType: "application/json; charset=utf-8",
+            data: function (params) {
+                var query = {
+                    term: params.term,
+                };
+                return query;
+            },
+            processResults: function (result) {
+                return {
+                    results: $.map(result, function (item) {
+                        return {
+                            text: item.namaJenis,
                             id: item.id
                         }
                     })

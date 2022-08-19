@@ -14,6 +14,9 @@ public class Kontrak
     [Required]
     public long TransKegiatanId { get; set; }
 
+    [Required]
+    public Guid PenyediaId { get; set; }
+
     [MaxLength(100)]
     [Required(ErrorMessage = "No Kontrak Wajib Diisi!")]
     public string NoKontrak { get; set; }
@@ -51,5 +54,7 @@ public class Kontrak
     public TransKegiatan TransKegiatan { get; set; }
 
     public JenisPengadaan JenisPengadaan { get; set; }
+
+    public Penyedia Penyedia { get; set; }
 
 }

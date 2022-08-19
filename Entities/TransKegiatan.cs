@@ -40,5 +40,7 @@ public class TransKegiatan {
     public SubKegiatan SubKegiatan { get; set; }
 
     public List<TransDetails> TransDetails { get; set; }
+
+    public List<Kontrak> Kontraks { get; set; }
     
 }

@@ -20,5 +20,7 @@ namespace PptkNew.Data
         public DbSet<TransKegiatan> TransKegiatans { get; set; }
 
         public DbSet<TransDetails> TransDetails { get; set; }
+
+        public DbSet<Kontrak> Kontraks { get; set; }
     }
 }

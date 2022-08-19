@@ -5,6 +5,7 @@
 }
 
 @section plugincss {
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/animate.min.css" />
     <link rel="stylesheet" type="text/css" href="~/admin/assets/css/datatables.css" />
     <link rel="stylesheet" href="~/lib/sweetalert/sweetalert2.min.css" />
     <link rel="stylesheet" href="~/admin/assets/css/select2.css" />
@@ -117,7 +118,7 @@
     </div>
 
     <!-- Form Tambah Rekening -->
-    <div class="row" id="frmTambah" style="display:none">
+    <div class="row animate__animated animate__fadeInUp" id="frmTambah" style="display:none">
         <div class="col-sm-12">
             <form method="post" action="/transaksi/detail/store" id="frmRekening">
                 <input type="hidden" asp-for="TransDetails!.TransDetailId" id="trxId" />
@@ -181,61 +182,74 @@
     </div>
 
     <!-- Form Tambah Kontrak -->
-    <div class="row" id="frmAddKontrak" style="display:none;">
+    <div class="row animate__animated animate__fadeInDown" id="frmAddKontrak" style="display:none;">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title text-center">Tambah Kontrak</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label>No. Kontrak</label>
-                                <input type="text" class="form-control" placeholder="Isi no. kontrak..." />
+                    <form method="post" action="/transaksi/detail/kontrak/store" id="frmKontrak">
+                        <input type="hidden" asp-for="Kontrak!.TransKegiatanId" value="@Model.TransKegiatan!.TransKegiatanId" />
+                        <input type="hidden" asp-for="Kontrak!.NilaiKontrak" id="rNilaiKontrak" />
+                        <input type="hidden" asp-for="Kontrak!.NilaiKAK" id="rNilaiKAK" />
+                        <input type="hidden" asp-for="Kontrak!.NilaiRAB" id="rNilaiRAB" />
+                        <input type="hidden" asp-for="Kontrak!.NilaiHPS" id="rNilaiHPS" />
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>No. Kontrak</label>
+                                    <input type="text" class="form-control inputKontrak" asp-for="Kontrak!.NoKontrak" placeholder="Isi no. kontrak..." autocomplete="off" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Kode RUP</label>
+                                    <input type="text" class="form-control inputKontrak" asp-for="Kontrak!.KodeRUP" placeholder="Isi Kode RUP..." autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nilai Kontrak</label>
+                                    <input type="text" class="form-control inputKontrak autonumber" id="txtNilaiKontrak" autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Jenis Pengadaan</label>
+                                    <select class="form-control" id="sJenisPengadaan" asp-for="Kontrak!.JenisPengadaanId" autocomplete="off" required></select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Kode RUP</label>
-                                <input type="text" class="form-control" placeholder="Isi Kode RUP..." />
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Nilai KAK</label>
+                                    <input type="text" class="form-control inputKontrak autonumber" id="txtNilaiKAK" autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nilai RAB</label>
+                                    <input type="text" class="form-control inputKontrak autonumber" id="txtNilaiRAB" autocomplete="off" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Nilai HPS</label>
+                                    <input type="text" class="form-control inputKontrak autonumber" id="txtNialiHPS" autocomplete="off" />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Nilai Kontrak</label>
-                                <input type="text" class="form-control autonumber" />
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Penyedia</label>
+                                    <select class="form-control inputKontrak" asp-for="Kontrak!.PenyediaId" id="sPenyedia" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Mulai</label>
+                                    <input type="text" class="form-control inputKontrak dtpicker" asp-for="Kontrak!.TglMulai" placeholder="Isi tanggal mulai..." autocomplete="off" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Berakhir</label>
+                                    <input type="text" class="form-control inputKontrak dtpicker" asp-for="Kontrak!.TglBerakhir" placeholder="Isi tanggal berakhir..." autocomplete="off" required />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label>Nilai KAK</label>
-                                <input type="text" class="form-control autonumber" />
-                            </div>
-                            <div class="form-group">
-                                <label>Nilai RAB</label>
-                                <input type="text" class="form-control autonumber" />
-                            </div>
-                            <div class="form-group">
-                                <label>Nilai HPS</label>
-                                <input type="text" class="form-control autonumber" />
-                            </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center mt-3">
+                                <button type="button" id="btnCancelKontrak" class="btn btn-danger mr-3">Batal</button>
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div> 
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label>Penyedia</label>
-                                <select class="form-control" id="sPenyedia"></select>
-                            </div>
-                            <div class="form-group">
-                                <label>Tanggal Mulai</label>
-                                <input type="text" class="form-control dtpicker" placeholder="Isi tanggal mulai..." />
-                            </div>                            
-                            <div class="form-group">
-                                <label>Tanggal Berakhir</label>
-                                <input type="text" class="form-control dtpicker" placeholder="Isi tanggal berakhir..." />
-                            </div>
-                        </div>
-                        <div class="col-sm-12 text-end mt-3">
-                            <button type="button" id="btnCancelKontrak" class="btn btn-danger mr-3">Batal</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

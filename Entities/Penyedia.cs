@@ -29,4 +29,6 @@ public class Penyedia
 
     public DateTime? UpdatedAt { get; set; } = DateTime.Now;
 
+#nullable disable
+    public List<Kontrak> Kontraks { get; set; }
 }

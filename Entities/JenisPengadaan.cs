@@ -21,6 +21,6 @@ namespace PptkNew.Entities
 
         public DateTime? UpdatedAt { get; set; } = DateTime.Now;
 
-        public List<TransKegiatan> TransKegiatans { get; set; }
+        public List<Kontrak> Kontraks { get; set; }
     }
 }
