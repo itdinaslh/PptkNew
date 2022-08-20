@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using PptkNew.Models.Transaksi;
 using PptkNew.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace PptkNew.Controllers;
 
@@ -134,6 +135,9 @@ public class TransKegiatanController : Controller
 
         if (ModelState.IsValid)
         {
+            model.Kontrak.TglMulai = DateOnly.Parse(model.TglAwal!);
+            model.Kontrak.TglBerakhir = DateOnly.Parse(model.TglAkhir!);
+
             await details.SaveKontrakAsync(model.Kontrak);
 
             return Json(Result.Success());
@@ -155,5 +159,21 @@ public class TransKegiatanController : Controller
         }
 
         return Ok(Result.Failed());
+    }
+
+
+    [HttpPost("/transaksi/detail/kontrak/delete")]
+    public async Task<IActionResult> DeleteKontrak(Guid? id)
+    {
+        Kontrak? kontrak = await details.Kontraks.FirstOrDefaultAsync(k => k.KontrakId == id);
+
+        if (kontrak is not null)
+        {
+            await details.DeleteKontrakAsync(id);
+
+            return Json(Result.Success());
+        }
+
+        return Json(Result.Failed());
     }
 }

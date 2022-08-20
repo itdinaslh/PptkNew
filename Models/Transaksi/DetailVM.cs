@@ -9,4 +9,8 @@ public class DetailVM
     public TransDetails? TransDetails { get; set; }
 
     public Kontrak? Kontrak { get; set; }
+
+    public string? TglAwal { get; set; }
+
+    public string? TglAkhir { get; set; }
 }

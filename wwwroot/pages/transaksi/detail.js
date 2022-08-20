@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     loadTable();
+    loadKontrak();
     ComputeTotal();
 
     $('.autonumber').autoNumeric('init', { currencySymbol: 'Rp. ', allowDecimalPadding: false, digitGroupSeparator: '.', decimalCharacter: ',' });
@@ -51,6 +52,44 @@ function loadTable() {
     });
 }
 
+function loadKontrak() {
+    var trans = $("#TransID").val();
+
+    $('#tblKontrak').DataTable().destroy();
+    $('#tblKontrak').DataTable({
+        serverSide: true,
+        processing: true,
+        paging: false,
+        ordering: false,
+        searching: false,
+        info: false,
+        responsive: true,
+        stateSave: true,
+        ajax: {
+            url: '/api/transaksi/detail/kontrak/list?trans=' + trans,
+            method: 'POST'
+        },
+        columns: [
+            { data: 'noKontrak', name: 'noKontrak', orderable: false },
+            { data: 'penyedia', name: 'penyedia' },
+            { data: 'tglMulai', name: 'tglMulai' },
+            { data: 'tglBerakhir', name: 'tglBerakhir'},
+            {
+                "render": function (data, type, row) {
+                    return "<button class='btn btn-sm btn-success showMe' style='margin-right:5px;' data-href='/transaksi/detail/kontrak/edit/?id="
+                        + row.kontrakId + "'><i class='fa fa-edit'></i></button><button class='btn btn-sm btn-danger delBtnKontrak' data-id='"
+                        + row.kontrakId + "'><i class='fa fa-trash'></i></button > ";
+                }
+            }
+        ],
+        columnDefs: [
+            { className: 'align-middle', targets: [0, 1] },
+            { className: 'text-center align-middle', targets: [2, 3] },
+            { className: 'text-center', targets: [4] }
+        ]
+    });
+}
+
 function ComputeTotal() {
     var trans = $("#TransID").val();
 
@@ -78,10 +117,29 @@ function DeleteDetail(id) {
     });
 }
 
+function DeleteKontrak(id) {
+    $.ajax({
+        url: '/transaksi/detail/kontrak/delete/?id=' + id,
+        dataType: 'json',
+        method: 'POST',
+        success: function (response) {
+            if (response.success) {
+                loadKontrak();
+            }
+        }
+    });
+}
+
 $(document).on('click', '.delBtn', function () {
     var id = $(this).attr('data-id');
 
     DeleteDetail(id);
+});
+
+$(document).on('click', '.delBtnKontrak', function () {
+    var id = $(this).attr('data-id');
+
+    DeleteKontrak(id);
 });
 
 $(document).on('shown.bs.modal', function () {
@@ -194,6 +252,7 @@ $('#frmKontrak').submit(function (e) {
         success: function (result) {
             if (result.success) {                
                 HideFrmKontrak();
+                KontrakSuccessAdded();
             } else {
                 showInvalidMessage();
             }
@@ -329,5 +388,17 @@ function RekSuccessAdded() {
     }).then(function () {
         loadTable();
         ComputeTotal();
+    });
+}
+
+function KontrakSuccessAdded() {
+    Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Data berhasil disimpan!',
+        showConfirmButton: false,
+        timer: 1000
+    }).then(function () {
+        loadKontrak();        
     });
 }

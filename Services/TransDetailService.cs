@@ -29,6 +29,18 @@ public class TransDetailService : ITransDetails
         }
     }
 
+    public async Task DeleteKontrakAsync(Guid? id)
+    {
+        Kontrak? data = await context.Kontraks.FindAsync(id);
+
+        if (data is not null)
+        {
+            context.Remove(data);
+
+            await context.SaveChangesAsync();
+        }
+    }
+
     public async Task SaveDataAsync(TransDetails transDetails)
     {
         await context.AddAsync(transDetails);        

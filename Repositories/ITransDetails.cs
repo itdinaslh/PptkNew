@@ -15,4 +15,6 @@ public interface ITransDetails
     Task SaveKontrakAsync(Kontrak kontrak);
 
     Task DeleteDataAsync(Guid? id);
+
+    Task DeleteKontrakAsync(Guid? id);
 }
