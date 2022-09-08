@@ -18,7 +18,7 @@ public class HomeController : Controller
     [HttpGet("/dashboard")]
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction("Index", "TransKegiatan");
     }
 
     [HttpGet("/")]
