@@ -8,9 +8,9 @@ namespace PptkNew.Controllers;
 public class AuthorizationController : Controller
 {
     [HttpGet("~/login")]
-    public IActionResult LogIn()
+    public IActionResult LogIn(string returnUrl)
     {
-        return Challenge(new AuthenticationProperties { RedirectUri = "/dashboard" }, OpenIdConnectDefaults.AuthenticationScheme);
+        return Challenge(new AuthenticationProperties { RedirectUri = returnUrl }, OpenIdConnectDefaults.AuthenticationScheme);
     }
 
     [HttpGet("~/logout"), HttpPost("~/logout")]

@@ -1,6 +1,7 @@
 ﻿<header class="main-nav">
-    <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="~/images/logo/logo-dinas-75.png" alt="">
-    <div class="badge-bottom"></div>
+    <div class="sidebar-user text-center">        
+        <img class="img-90 rounded-circle" src="~/images/logo/logo-dinas-75.png" alt="">
+        <div class="badge-bottom"></div>
         <a href="javascript:void(0);">
             <h6 class="mt-3 f-14 f-w-600">@(((ClaimsIdentity)User.Identity!).Claims.Where(c => c.Type == "given_name").Select(c => c.Value).SingleOrDefault())</h6>
         </a>

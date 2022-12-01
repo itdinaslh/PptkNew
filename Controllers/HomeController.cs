@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PptkNew.Controllers;
 
-[Authorize]
+[Authorize(Roles = "SysAdmin, PptkAdmin")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

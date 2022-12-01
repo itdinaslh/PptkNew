@@ -16,6 +16,7 @@ namespace PptkNew.Data
         public DbSet<JenisPengadaan> JenisPengadaans { get; set; }        
         public DbSet<UserSkpd> UserSkpds { get; set; }
         public DbSet<Penyedia> Penyedias { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         public DbSet<TransKegiatan> TransKegiatans { get; set; }
 
